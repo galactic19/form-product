@@ -36,17 +36,19 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-border-strong bg-surface">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+    <footer className="border-t border-border bg-background pt-16 pb-8">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-16">
           {/* Brand Column */}
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="text-2xl font-bold text-foreground hover:text-primary transition-colors cursor-pointer">
               양지바른웹
             </Link>
-            <p className="mt-4 text-sm text-foreground-muted">
+            <p className="mt-4 text-sm text-muted-foreground">
               폼 디자인을 단순하게, 강력하게.
+              <br />
+              Lovable Style Redesign.
             </p>
           </div>
 
@@ -58,7 +60,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-sm text-foreground-muted hover:text-primary transition-colors cursor-pointer"
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer"
                   >
                     {link.name}
                   </Link>
@@ -75,7 +77,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-sm text-foreground-muted hover:text-primary transition-colors cursor-pointer"
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer"
                   >
                     {link.name}
                   </Link>
@@ -92,7 +94,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-sm text-foreground-muted hover:text-primary transition-colors cursor-pointer"
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer"
                   >
                     {link.name}
                   </Link>
@@ -109,7 +111,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-sm text-foreground-muted hover:text-primary transition-colors cursor-pointer"
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer"
                   >
                     {link.name}
                   </Link>
@@ -122,7 +124,7 @@ export function Footer() {
         {/* Bottom Section */}
         <div className="pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4">
           {/* Copyright */}
-          <p className="text-sm text-foreground-subtle">
+          <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} 양지바른웹. All rights reserved.
           </p>
 
@@ -134,10 +136,10 @@ export function Footer() {
                 <Link
                   key={social.name}
                   href={social.href}
-                  className="p-2 border border-border bg-background hover:border-primary transition-all cursor-pointer"
+                  className="p-2 rounded-full border border-border bg-muted/50 hover:bg-muted hover:border-primary transition-all cursor-pointer"
                   aria-label={social.name}
                 >
-                  <Icon className="h-5 w-5 text-foreground-muted hover:text-primary transition-colors" />
+                  <Icon className="h-5 w-5 text-muted-foreground hover:text-primary transition-colors" />
                 </Link>
               )
             })}
