@@ -15,7 +15,7 @@ export function HeroSection() {
         <div>
           <RevealOnScroll>
             <p className="mb-6 inline-flex border border-border px-4 py-2 text-sm font-semibold tracking-wide text-foreground-muted">
-              가입상품 영업 전용 신청폼
+              가입상품 영업 전용 접수폼
             </p>
           </RevealOnScroll>
 
@@ -49,9 +49,9 @@ export function HeroSection() {
 
           <RevealOnScroll delay={0.4}>
             <div className="mt-10 grid gap-3 text-sm sm:grid-cols-3">
-              <p className="border border-border bg-surface px-4 py-3 font-semibold">평균 제작 1~2일</p>
-              <p className="border border-border bg-surface px-4 py-3 font-semibold">최소 5만원 시작</p>
-              <p className="border border-border bg-surface px-4 py-3 font-semibold">카드 등록 없는 체험</p>
+              <p className="border border-border bg-surface px-4 py-3 font-semibold">1~2일 내 제작</p>
+              <p className="border border-border bg-surface px-4 py-3 font-semibold">5만원부터 시작</p>
+              <p className="border border-border bg-surface px-4 py-3 font-semibold">카드 등록 없이 체험</p>
             </div>
           </RevealOnScroll>
         </div>
