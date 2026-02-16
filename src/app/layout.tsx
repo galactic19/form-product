@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { Geist_Mono, Noto_Sans_KR } from 'next/font/google'
 import './globals.css'
-import { ThemeToggle } from '@/components/ThemeToggle'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 
@@ -43,7 +42,6 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={`${notoSansKr.variable} ${geistMono.variable} font-korean antialiased`}>
-        <ThemeToggle />
         <Header />
         {children}
         <Footer />
