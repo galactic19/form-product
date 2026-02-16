@@ -9,7 +9,7 @@ export function ThemeToggle() {
   if (!mounted) {
     return (
       <button
-        className="fixed top-4 right-4 sm:top-6 sm:right-6 z-50 h-10 w-10 sm:h-12 sm:w-12 border-2 border-border bg-background transition-all hover:border-primary"
+        className="fixed top-4 right-4 sm:top-6 sm:right-6 z-50 h-10 w-10 sm:h-12 sm:w-12 border border-border bg-background transition-all hover:border-primary"
         aria-label="테마 전환"
       >
         <span className="sr-only">Loading theme toggle</span>
@@ -20,7 +20,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="fixed top-4 right-4 sm:top-6 sm:right-6 z-50 h-10 w-10 sm:h-12 sm:w-12 border-2 border-border bg-background transition-all hover:border-primary hover:scale-110 active:scale-95"
+      className="fixed top-4 right-4 sm:top-6 sm:right-6 z-50 h-10 w-10 sm:h-12 sm:w-12 border border-border bg-background transition-all hover:border-primary hover:scale-110 active:scale-95"
       aria-label={theme === 'light' ? '다크 모드로 전환' : '라이트 모드로 전환'}
     >
       {theme === 'light' ? (

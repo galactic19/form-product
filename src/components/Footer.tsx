@@ -36,7 +36,7 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="border-t-2 border-border-strong bg-surface">
+    <footer className="border-t border-border-strong bg-surface">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         {/* Main Footer Content */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
@@ -120,7 +120,7 @@ export function Footer() {
         </div>
 
         {/* Bottom Section */}
-        <div className="pt-8 border-t-2 border-border flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div className="pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4">
           {/* Copyright */}
           <p className="text-sm text-foreground-subtle">
             © {new Date().getFullYear()} FORM. All rights reserved.
@@ -134,7 +134,7 @@ export function Footer() {
                 <Link
                   key={social.name}
                   href={social.href}
-                  className="p-2 border-2 border-border bg-background hover:border-primary transition-all cursor-pointer"
+                  className="p-2 border border-border bg-background hover:border-primary transition-all cursor-pointer"
                   aria-label={social.name}
                 >
                   <Icon className="h-5 w-5 text-foreground-muted hover:text-primary transition-colors" />

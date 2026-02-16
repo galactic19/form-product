@@ -17,7 +17,7 @@ export function Header() {
 
   return (
     <header className="fixed top-4 left-4 right-4 sm:left-6 sm:right-6 z-40 animate-fade-in">
-      <nav className="border-2 border-border bg-background px-4 sm:px-6 py-3 sm:py-4 transition-all hover:border-primary">
+      <nav className="border border-border bg-background px-4 sm:px-6 py-3 sm:py-4 transition-all hover:border-primary">
         <div className="flex items-center justify-between max-w-7xl mx-auto">
           {/* Logo */}
           <Link 
@@ -40,7 +40,7 @@ export function Header() {
             ))}
             <Link
               href="#pricing"
-              className="px-6 py-2 border-2 border-primary bg-primary text-primary-foreground font-medium hover:bg-primary-dark hover:border-primary-dark transition-all cursor-pointer"
+              className="px-6 py-2 border border-primary bg-primary text-primary-foreground font-medium hover:bg-primary-dark hover:border-primary-dark transition-all cursor-pointer"
             >
               시작하기
             </Link>
@@ -62,7 +62,7 @@ export function Header() {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="md:hidden mt-4 pt-4 border-t-2 border-border space-y-3">
+          <div className="md:hidden mt-4 pt-4 border-t border-border space-y-3">
             {navigation.map((item) => (
               <Link
                 key={item.name}
@@ -76,7 +76,7 @@ export function Header() {
             <Link
               href="#pricing"
               onClick={() => setMobileMenuOpen(false)}
-              className="block w-full text-center px-6 py-2 border-2 border-primary bg-primary text-primary-foreground font-medium hover:bg-primary-dark hover:border-primary-dark transition-all cursor-pointer"
+              className="block w-full text-center px-6 py-2 border border-primary bg-primary text-primary-foreground font-medium hover:bg-primary-dark hover:border-primary-dark transition-all cursor-pointer"
             >
               시작하기
             </Link>
