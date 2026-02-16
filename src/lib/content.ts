@@ -18,11 +18,11 @@ export interface HeroContent {
 }
 
 export const heroContent: HeroContent = {
-  headline: '가입상품 팔면서 아직도 카톡으로 신청받으세요?',
+  headline: '가입상품 상담, 아직도 카톡으로 받고 계신가요?',
   subheadline:
-    '인터넷, TV, 렌탈, 보험... 가입상품 판매자를 위한 전용 신청폼.\n원페이지 템플릿부터 구독형 관리 서비스까지.',
+    '인터넷, TV, 렌탈, 보험 영업에 맞춘 전용 신청폼.\n템플릿으로 빠르게 시작하고, 필요할 때 구독형 관리로 확장하세요.',
   cta: {
-    primary: { text: '템플릿 둘러보기', href: '#template-detail' },
+    primary: { text: '템플릿 바로 보기', href: '#template-detail' },
     secondary: { text: '무료 체험 시작', href: '#subscription-detail' },
   },
 }
@@ -46,29 +46,29 @@ export interface ProblemContent {
 }
 
 export const problemContent: ProblemContent = {
-  title: '이런 경험, 있지 않으세요?',
-  subtitle: '가입상품 영업 현장에서 매일 겪는 문제들',
+  title: '혹시, 이런 상황이 반복되나요?',
+  subtitle: '가입상품 상담 현장에서 자주 놓치는 순간들',
   scenarios: [
     {
       id: 1,
-      title: '카톡 지옥',
+      title: '카톡 상담 과부하',
       icon: '💬',
       description:
-        '"이름이요? 연락처요? 주소요? 어떤 상품이요?"\n하나하나 물어보다 대화 끊기고, 정보 빠지고, 고객 놓침.',
+        '"이름, 연락처, 주소, 상품..." 같은 질문을 반복하다가\n대화가 끊기고 필요한 정보가 빠집니다.',
     },
     {
       id: 2,
-      title: '구글폼의 배신',
+      title: '신뢰 낮은 폼',
       icon: '📋',
       description:
-        '링크 보냈더니 "이거 사기 아니에요?"\n디자인이 허접해서 고객이 신뢰를 못 함.',
+        '링크를 보낸 뒤 "이거 믿어도 되나요?"라는 반응이 나옵니다.\n폼 첫인상 때문에 상담 기회가 줄어듭니다.',
     },
     {
       id: 3,
-      title: '외주의 늪',
+      title: '외주 비용 부담',
       icon: '💸',
       description:
-        '제대로 만들려니 견적 80만원.\n상품 바뀌면 수정비 또 따로. 포기.',
+        '제대로 만들려니 견적이 80만원 안팎.\n상품이 바뀔 때마다 수정비가 추가됩니다.',
     },
   ],
 }
@@ -97,42 +97,43 @@ export interface SolutionChoiceContent {
 }
 
 export const solutionChoiceContent: SolutionChoiceContent = {
-  title: '상황에 맞게 선택하세요',
-  subtitle: '템플릿과 구독, 두 가지 방법으로 시작할 수 있습니다',
+  title: '지금 상황에 맞게 시작하세요',
+  subtitle: '빠르게 쓰는 템플릿, 직접 운영하는 구독 서비스',
   options: [
     {
       id: 1,
       type: 'template',
       icon: '💼',
       title: '템플릿 구매',
-      subtitle: '만들어 드립니다',
+      subtitle: '빠르게 도입하세요',
       features: [
-        '원페이지 완성본',
-        '모바일 최적화',
-        '링크 바로 사용',
+        '업종 맞춤 원페이지',
+        '모바일 최적화 구성',
+        '링크 즉시 배포',
         '1회 수정 포함',
       ],
-      priceText: '5만원~ (1회)',
-      cta: { text: '템플릿 보기', href: '#template-detail' },
+      priceText: '5만원부터 (1회)',
+      cta: { text: '템플릿 자세히 보기', href: '#template-detail' },
     },
     {
       id: 2,
       type: 'subscription',
       icon: '🚀',
       title: '구독 서비스',
-      subtitle: '직접 관리하세요',
+      subtitle: '직접 운영하세요',
       features: [
-        '폼 자유롭게 생성',
+        '폼 자유 생성 및 수정',
         '카카오톡 알림',
-        '고객에게 자동 메시지',
+        '고객 자동 접수 메시지',
         'Admin 대시보드',
         '구글시트 자동 연동',
       ],
-      priceText: '월 ₩9,900~',
-      cta: { text: '무료 체험', href: '#subscription-detail' },
+      priceText: '월 9,900원부터',
+      cta: { text: '무료 체험 시작하기', href: '#subscription-detail' },
     },
   ],
-  helpText: '잘 모르겠다면? → 템플릿부터 시작하세요. 나중에 구독으로 전환할 수 있습니다.',
+  helpText:
+    '어떤 상품이 맞는지 고민된다면 템플릿으로 먼저 시작하세요. 필요할 때 구독으로 전환할 수 있습니다.',
 }
 
 // -----------------------------------------------------------------------------
@@ -163,35 +164,35 @@ export interface TemplateDetailContent {
 }
 
 export const templateDetailContent: TemplateDetailContent = {
-  title: '외주 80만원짜리를 5만원에',
-  subtitle: '업종별 최적화 템플릿으로 바로 영업 시작',
+  title: '외주 대신, 검증된 템플릿으로 시작',
+  subtitle: '가입상품 영업에 맞춘 템플릿을 빠르게 적용하세요',
   templates: [
     {
       id: 1,
       name: '인터넷/TV 가입 신청',
       icon: '🌐',
-      description: '통신사별 요금제 선택, 설치 주소 입력 폼',
+      description: '통신사별 요금제 선택과 설치 정보 접수에 최적화된 폼',
       mockupImage: '/images/landing/templates/template-internet.png',
     },
     {
       id: 2,
       name: '정수기/렌탈 상담 신청',
       icon: '💧',
-      description: '제품별 옵션, 설치 희망일, 상담 시간 선택',
+      description: '제품 옵션, 설치 희망일, 상담 시간을 한 번에 받는 폼',
       mockupImage: '/images/landing/templates/template-rental.png',
     },
     {
       id: 3,
       name: '보험 상담 신청',
       icon: '🛡',
-      description: '보험 유형, 가입 목적, 상담 가능 시간',
+      description: '보험 유형과 가입 목적, 상담 가능 시간을 명확히 수집',
       mockupImage: '/images/landing/templates/template-insurance.png',
     },
     {
       id: 4,
       name: '범용 가입상품',
       icon: '📱',
-      description: '모든 가입상품에 사용 가능한 기본 템플릿',
+      description: '여러 가입상품에 공통으로 적용 가능한 기본 템플릿',
       mockupImage: '/images/landing/templates/template-general.png',
     },
   ],
@@ -199,20 +200,20 @@ export const templateDetailContent: TemplateDetailContent = {
     {
       item: '기본 템플릿',
       price: '₩50,000 ~ ₩100,000',
-      description: '원페이지 완성 + 호스팅 + 1회 수정',
+      description: '원페이지 완성본 + 호스팅 + 1회 수정 포함',
     },
     {
       item: '+ 구글시트 연동',
       price: '₩10,000 ~ ₩20,000',
-      description: '폼 응답 → 스프레드시트 자동 저장',
+      description: '폼 응답을 스프레드시트로 자동 저장',
     },
     {
       item: '+ 이미지 커스텀',
       price: '₩20,000 ~ ₩30,000',
-      description: '로고/색상/문구 맞춤 제작',
+      description: '로고, 색상, 문구를 업종에 맞게 커스텀',
     },
   ],
-  deliveryInfo: '주문 후 1~2일 안에 완성. 링크 하나로 바로 영업 시작.',
+  deliveryInfo: '주문 후 1~2일 내 완성본 전달. 링크 하나로 바로 상담을 시작할 수 있습니다.',
 }
 
 // -----------------------------------------------------------------------------
@@ -235,32 +236,32 @@ export interface SubscriptionDetailContent {
 }
 
 export const subscriptionDetailContent: SubscriptionDetailContent = {
-  title: '영업이 바쁜 당신을 위한 관리 도구',
-  subtitle: '템플릿과의 차별점, 본격적인 영업 관리 기능',
+  title: '영업 속도를 올리는 운영 도구',
+  subtitle: '신청 접수부터 후속 대응까지, 한 번에 관리하세요',
   features: [
     {
       id: 1,
       title: '카카오톡 실시간 알림',
       description:
-        '고객이 폼 작성하면 즉시 카톡으로 알림.\n구글시트 열어볼 필요 없이, 바로 전화하세요.',
+        '고객이 폼을 제출하면 즉시 카카오톡으로 알림이 도착합니다.\n확인 지연 없이 바로 연락을 시작하세요.',
       icon: '📱',
-      benefit: '영업 기회를 놓치지 않습니다',
+      benefit: '신규 상담을 놓치지 않습니다',
     },
     {
       id: 2,
       title: '고객에게 자동 접수 확인 메시지',
       description:
-        '신청한 고객에게 카카오톡으로 접수 확인 메시지가 자동 전송됩니다.\n"이 업체 제대로 된 곳이네" — 고객 신뢰도가 올라갑니다.',
+        '신청 직후 고객에게 접수 확인 메시지가 자동 발송됩니다.\n응답 대기 불안을 줄이고 신뢰를 높입니다.',
       icon: '✉️',
-      benefit: '전문성 있는 인상을 줍니다',
+      benefit: '첫 응답 경험이 좋아집니다',
     },
     {
       id: 3,
       title: 'Admin 대시보드',
       description:
-        '모든 신청 내역을 한 화면에서 관리.\n처리 상태 체크, 메모 추가, 엑셀 다운로드까지.',
+        '신청 내역을 한 화면에서 확인하고 상태를 관리합니다.\n메모, 검색, 엑셀 다운로드까지 지원합니다.',
       icon: '📊',
-      benefit: '고객 관리가 체계적으로 됩니다',
+      benefit: '상담 관리가 체계화됩니다',
     },
   ],
 }
@@ -311,11 +312,11 @@ export interface PricingContent {
 }
 
 export const pricingContent: PricingContent = {
-  title: '커피 한 잔 가격으로 시작하세요',
-  subtitle: '템플릿과 구독, 상황에 맞게 선택하세요',
+  title: '부담 없이 시작하는 요금제',
+  subtitle: '필요한 방식으로 선택해 운영하세요',
   templatePricing: {
     title: '템플릿 (1회 구매)',
-    description: '빠르게 하나만 필요한 분에게 추천',
+    description: '단건 제작이 필요한 분에게 추천',
     items: [
       { item: '기본 템플릿', price: '₩50,000 ~ ₩100,000' },
       { item: '+ 구글시트 연동', price: '₩10,000 ~ ₩20,000' },
@@ -324,7 +325,7 @@ export const pricingContent: PricingContent = {
   },
   subscriptionPricing: {
     title: '구독 서비스 (월 과금)',
-    description: '본격적으로 영업하는 분에게 추천',
+    description: '지속적으로 상담을 운영하는 분에게 추천',
     plans: [
       {
         id: 1,
@@ -396,8 +397,8 @@ export const pricingContent: PricingContent = {
       },
     ],
   },
-  conversionOffer: '템플릿 구매 고객은 구독 전환 시 첫 달 50% 할인',
-  bottomNote: '카드 등록 없이 시작 · 언제든 해지 가능',
+  conversionOffer: '템플릿 구매 고객은 구독 전환 시 첫 달 50% 할인을 제공합니다',
+  bottomNote: '카드 등록 없이 시작 · 원할 때 해지 가능',
 }
 
 // -----------------------------------------------------------------------------
@@ -425,45 +426,45 @@ export interface HowItWorksContent {
 }
 
 export const howItWorksContent: HowItWorksContent = {
-  title: '시작하는 건 간단합니다',
-  subtitle: '복잡한 과정 없이 3단계로 완성',
+  title: '도입은 3단계면 충분합니다',
+  subtitle: '복잡한 설정 없이 바로 시작하세요',
   templateFlow: {
-    title: '템플릿 구매 플로우',
+    title: '템플릿 도입 절차',
     steps: [
       {
         step: 1,
         title: '업종 선택',
-        description: '파는 상품을 알려주세요',
+        description: '판매 상품과 상담 목적을 선택',
       },
       {
         step: 2,
         title: '정보 전달',
-        description: '로고, 연락처, 원하는 문구',
+        description: '로고, 연락처, 원하는 문구 전달',
       },
       {
         step: 3,
         title: '링크 수령',
-        description: '1~2일 안에 완성본 전달',
+        description: '1~2일 내 완성본 수령 후 바로 공유',
       },
     ],
   },
   subscriptionFlow: {
-    title: '구독 서비스 플로우',
+    title: '구독 시작 절차',
     steps: [
       {
         step: 1,
         title: '가입',
-        description: '30초면 끝',
+        description: '30초 내 기본 설정 완료',
       },
       {
         step: 2,
         title: '폼 만들기',
-        description: '템플릿 선택하고 수정하면 완성',
+        description: '템플릿 선택 후 필요한 항목만 수정',
       },
       {
         step: 3,
         title: '공유',
-        description: '링크 복사해서 블로그/SNS에 붙이기',
+        description: '생성된 링크를 블로그/SNS/메신저에 배포',
       },
     ],
   },
@@ -491,20 +492,20 @@ export interface ScreenPreviewContent {
 }
 
 export const screenPreviewContent: ScreenPreviewContent = {
-  title: '고객이 보게 되는 화면입니다',
-  subtitle: '깔끔한 디자인 = 고객 신뢰',
+  title: '고객이 실제로 보는 신청 화면',
+  subtitle: '첫 화면 신뢰가 상담 전환을 좌우합니다',
   before: {
     label: 'Before',
     image: '/images/landing/preview/screen-before.png',
-    caption: '구글폼 - "이거 사기 아니에요?"',
+    caption: '구글폼 - "이 링크, 괜찮은 건가요?"',
   },
   after: {
     label: 'After',
     image: '/images/landing/preview/screen-after.png',
-    caption: '우리 폼 - "제대로 된 업체네"',
+    caption: '전용 폼 - "믿고 신청해도 되겠네요"',
   },
   bottomCopy:
-    '구글폼 링크 보내면 "사기 아니에요?" 라고 묻던 고객이,\n이 폼을 보면 "제대로 된 업체네" 라고 느낍니다.',
+    '같은 상담이라도 화면 인상은 다릅니다.\n신뢰감 있는 신청폼이 응답률과 상담 연결을 높여줍니다.',
 }
 
 // -----------------------------------------------------------------------------
@@ -527,13 +528,13 @@ export interface TestimonialsContent {
 }
 
 export const testimonialsContent: TestimonialsContent = {
-  title: '이미 영업 현장에서 쓰고 있습니다',
-  subtitle: '나 같은 사람들이 실제로 사용하고 있습니다',
+  title: '현장에서 이미 사용 중입니다',
+  subtitle: '가입상품 영업 담당자들의 실제 사용 후기',
   testimonials: [
     {
       id: 1,
       quote:
-        '외주 맡기면 80만원인데 7만원에 끝났어요.\n다음날 바로 링크 받아서 블로그에 달았더니 그날부터 신청이 들어왔습니다.',
+        '외주를 고민하다 템플릿으로 시작했는데 비용 부담이 크게 줄었습니다.\n다음날 링크를 받아 바로 상담을 받기 시작했어요.',
       author: '김OO',
       role: '인터넷/TV 대리점 3년차',
       type: 'template',
@@ -541,7 +542,7 @@ export const testimonialsContent: TestimonialsContent = {
     {
       id: 2,
       quote:
-        '처음에 템플릿 샀다가, 카톡 알림이 너무 편해서 구독으로 바꿨어요.\n신청 들어오면 바로 전화하니까 계약률이 확 올랐습니다.',
+        '처음엔 템플릿으로 시작했고, 알림이 필요해 구독으로 전환했습니다.\n신청 즉시 연락하니 상담 연결 속도가 확실히 빨라졌습니다.',
       author: '박OO',
       role: '정수기 렌탈 영업',
       type: 'conversion',
@@ -549,7 +550,7 @@ export const testimonialsContent: TestimonialsContent = {
     {
       id: 3,
       quote:
-        '고객한테 접수 확인 카톡이 자동으로 가니까\n"여기 믿을만하다"는 반응이 늘었어요. 이전엔 상상도 못한 기능.',
+        '접수 확인 메시지가 자동으로 나가니 고객 반응이 훨씬 안정적입니다.\n처음 상담 단계에서 신뢰를 얻기 쉬워졌어요.',
       author: '이OO',
       role: '보험 설계사',
       type: 'subscription',
@@ -576,13 +577,13 @@ export interface FAQContent {
 
 export const faqContent: FAQContent = {
   title: '자주 묻는 질문',
-  subtitle: '궁금하신 점을 해결해드립니다',
+  subtitle: '도입 전에 많이 물어보는 내용을 정리했습니다',
   faqs: [
     {
       id: 1,
       question: 'IT를 잘 몰라도 되나요?',
       answer:
-        '템플릿은 저희가 만들어드리니까 아무것도 안 하셔도 됩니다.\n구독 서비스도 템플릿 선택하고 수정하면 끝이에요.',
+        '템플릿은 필요한 정보만 전달해주시면 제작해드립니다.\n구독 서비스도 템플릿을 선택해 항목만 수정하면 바로 사용할 수 있어요.',
     },
     {
       id: 2,
@@ -592,23 +593,23 @@ export const faqContent: FAQContent = {
     {
       id: 3,
       question: '네이버 블로그/카페에도 넣을 수 있나요?',
-      answer: '네, 링크 형태라 어디든 됩니다. 블로그, 카페, 인스타, 카톡 모두.',
+      answer: '네, 링크 형태라 어디든 넣을 수 있습니다. 블로그, 카페, 인스타, 카카오톡 모두 가능합니다.',
     },
     {
       id: 4,
       question: '템플릿 사고 나중에 구독으로 바꿀 수 있나요?',
-      answer: '네, 언제든 가능합니다. 구독 전환 시 첫 달 50% 할인 혜택도 있어요.',
+      answer: '네, 언제든 가능합니다. 구독으로 전환하면 첫 달 50% 할인 혜택이 적용됩니다.',
     },
     {
       id: 5,
       question: '구글시트 연동은 어떻게 되나요?',
       answer:
-        '템플릿 구매 시 ₩10,000~₩20,000 추가로 셋업해드립니다.\n구독 프로 플랜에는 기본 포함이에요.',
+        '템플릿 구매 시 ₩10,000~₩20,000 추가로 셋업해드립니다.\n구독 프로 플랜에는 기본 포함됩니다.',
     },
     {
       id: 6,
       question: '무료 체험 후 자동 결제되나요?',
-      answer: '아니요. 카드 등록 없이 시작하기 때문에 자동결제 없습니다.',
+      answer: '아니요. 카드 등록 없이 시작하므로 자동 결제되지 않습니다.',
     },
   ],
 }
@@ -629,11 +630,11 @@ export interface FinalCTAContent {
 }
 
 export const finalCTAContent: FinalCTAContent = {
-  headline: '다음 고객을 놓치기 전에',
-  subheadline: '템플릿 하나면 내일부터 영업이 달라집니다',
+  headline: '다음 상담 기회를 놓치기 전에',
+  subheadline: '템플릿으로 빠르게 시작하고, 필요할 때 구독으로 확장하세요',
   cta: {
-    primary: { text: '템플릿 주문하기 →', href: '#' },
-    secondary: { text: '구독 무료 체험 →', href: '#' },
+    primary: { text: '템플릿 바로 시작하기 →', href: '#' },
+    secondary: { text: '구독 무료 체험하기 →', href: '#' },
   },
   trustSignals: ['1~2일 내 완성', '카드 등록 불필요', '100% 환불 보장'],
 }
