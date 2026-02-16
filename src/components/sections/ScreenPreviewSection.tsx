@@ -1,6 +1,8 @@
 'use client'
 
 import { RevealOnScroll } from '@/components/animations/RevealOnScroll'
+import { SectionHeader } from '@/components/ui/SectionHeader'
+import { SurfaceCard } from '@/components/ui/SurfaceCard'
 import { screenPreviewContent } from '@/lib/content'
 
 function PreviewCard({
@@ -13,8 +15,10 @@ function PreviewCard({
   type: 'before' | 'after'
 }) {
   return (
-    <article className="border border-border bg-surface p-5">
-      <p className="text-sm font-semibold text-foreground-muted">{label}</p>
+    <SurfaceCard className="p-5">
+      <p className="inline-flex border border-border bg-background px-2 py-1 text-sm font-semibold text-foreground-muted">
+        {label}
+      </p>
       <div
         className={`mt-4 aspect-[9/16] border p-4 ${
           type === 'before'
@@ -31,8 +35,8 @@ function PreviewCard({
           <div className="h-8 w-full border border-border bg-background/70" />
         </div>
       </div>
-      <p className="mt-4 text-sm font-semibold text-primary">{caption}</p>
-    </article>
+      <p className="mt-4 border-l-2 border-primary pl-3 text-sm font-semibold text-primary">{caption}</p>
+    </SurfaceCard>
   )
 }
 
@@ -40,14 +44,7 @@ export function ScreenPreviewSection() {
   return (
     <section id="screen-preview" className="border-t border-border px-6 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl">
-        <RevealOnScroll>
-          <h2 className="text-4xl font-bold tracking-tight sm:text-6xl">
-            {screenPreviewContent.title}
-          </h2>
-        </RevealOnScroll>
-        <RevealOnScroll delay={0.1}>
-          <p className="mt-4 text-lg text-foreground-muted sm:text-xl">{screenPreviewContent.subtitle}</p>
-        </RevealOnScroll>
+        <SectionHeader title={screenPreviewContent.title} subtitle={screenPreviewContent.subtitle} />
 
         <div className="mt-12 grid gap-6 md:grid-cols-2">
           <RevealOnScroll direction="up">

@@ -9,6 +9,7 @@ export function HeroSection() {
   return (
     <section id="hero" className="relative overflow-hidden px-6 py-24 sm:py-32">
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_25%_20%,rgba(0,153,255,0.18),transparent_40%),radial-gradient(circle_at_80%_0%,rgba(0,153,255,0.08),transparent_30%)]" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(0,0,0,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.04)_1px,transparent_1px)] bg-[size:40px_40px] opacity-30" />
 
       <div className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
         <div>
@@ -20,7 +21,7 @@ export function HeroSection() {
 
           <SplitText
             text={heroContent.headline}
-            className="text-4xl font-bold leading-tight tracking-tight sm:text-6xl lg:text-7xl"
+            className="text-4xl font-bold leading-tight tracking-tight sm:text-6xl lg:text-7xl xl:text-[5.2rem]"
           />
 
           <RevealOnScroll delay={0.2}>
@@ -45,16 +46,29 @@ export function HeroSection() {
               </MagneticButton>
             </div>
           </RevealOnScroll>
+
+          <RevealOnScroll delay={0.4}>
+            <div className="mt-10 grid gap-3 text-sm sm:grid-cols-3">
+              <p className="border border-border bg-surface px-4 py-3 font-semibold">평균 제작 1~2일</p>
+              <p className="border border-border bg-surface px-4 py-3 font-semibold">최소 5만원 시작</p>
+              <p className="border border-border bg-surface px-4 py-3 font-semibold">카드 등록 없는 체험</p>
+            </div>
+          </RevealOnScroll>
         </div>
 
         <RevealOnScroll direction="left" delay={0.2}>
-          <div className="mx-auto w-full max-w-md border border-border bg-surface p-5 shadow-[0_24px_80px_rgba(0,0,0,0.16)]">
+          <div className="mx-auto w-full max-w-md border border-border bg-[color:var(--surface-elevated)] p-5 shadow-[var(--glow-soft)]">
             <div className="mb-4 border border-border bg-background px-4 py-3 text-sm font-medium text-foreground-muted">
               상단 이미지 영역 (플레이스홀더)
             </div>
 
             <div className="space-y-3 border border-primary/30 bg-gradient-to-b from-primary/15 to-transparent p-4">
-              <p className="text-sm font-semibold text-primary">신청폼 미리보기</p>
+              <div className="flex items-center justify-between">
+                <p className="text-sm font-semibold text-primary">신청폼 미리보기</p>
+                <span className="border border-primary/40 bg-primary/10 px-2 py-1 text-[11px] font-semibold text-primary">
+                  Mobile First
+                </span>
+              </div>
               <div className="h-9 border border-border bg-background" />
               <div className="h-9 border border-border bg-background" />
               <div className="h-9 border border-border bg-background" />
