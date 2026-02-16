@@ -15,8 +15,8 @@ export function TestimonialsSection() {
           {testimonialsContent.testimonials.map((testimonial, index) => (
             <RevealOnScroll key={testimonial.id} direction="up" delay={index * 0.1}>
               <SurfaceCard className="h-full p-6">
-                <p className="text-3xl leading-none text-primary">“</p>
-                <p className="mt-4 whitespace-pre-line text-sm leading-relaxed text-foreground-muted sm:text-base">
+                <p className="text-3xl leading-none text-primary">"</p>
+                <p className="mt-4 flex-grow whitespace-pre-line text-sm leading-relaxed text-foreground-muted sm:text-base">
                   {testimonial.quote}
                 </p>
                 <footer className="mt-6 border-t border-border pt-4">

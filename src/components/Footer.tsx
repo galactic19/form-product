@@ -43,7 +43,7 @@ export function Footer() {
           {/* Brand Column */}
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="text-2xl font-bold text-foreground hover:text-primary transition-colors cursor-pointer">
-              FORM
+              양지바른웹
             </Link>
             <p className="mt-4 text-sm text-foreground-muted">
               폼 디자인을 단순하게, 강력하게.
@@ -123,7 +123,7 @@ export function Footer() {
         <div className="pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4">
           {/* Copyright */}
           <p className="text-sm text-foreground-subtle">
-            © {new Date().getFullYear()} FORM. All rights reserved.
+            © {new Date().getFullYear()} 양지바른웹. All rights reserved.
           </p>
 
           {/* Social Links */}

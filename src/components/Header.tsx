@@ -25,7 +25,7 @@ export function Header() {
             href="/" 
             className="text-xl sm:text-2xl font-bold text-foreground hover:text-primary transition-colors cursor-pointer"
           >
-            FORM
+            양지바른웹
           </Link>
 
           {/* Desktop Navigation */}

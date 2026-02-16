@@ -8,7 +8,7 @@ import { solutionChoiceContent } from '@/lib/content'
 
 export function SolutionChoiceSection() {
   return (
-    <section id="solution-choice" className="border-t border-border px-6 py-24 sm:py-32">
+    <section id="solution" className="border-t border-border px-6 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl">
         <SectionHeader title={solutionChoiceContent.title} subtitle={solutionChoiceContent.subtitle} />
 
@@ -16,7 +16,7 @@ export function SolutionChoiceSection() {
           {solutionChoiceContent.options.map((option, index) => (
             <RevealOnScroll key={option.id} direction="up" delay={index * 0.1}>
               <SurfaceCard
-                className={`relative flex h-full flex-col p-8 ${
+                className={`relative h-full p-8 ${
                   option.type === 'subscription'
                     ? 'border-primary/50 shadow-[var(--glow-soft)]'
                     : 'border-border hover:border-primary/40'
@@ -31,7 +31,7 @@ export function SolutionChoiceSection() {
                 <h3 className="mt-4 text-3xl font-bold">{option.title}</h3>
                 <p className="mt-2 text-base text-foreground-muted">{option.subtitle}</p>
 
-                <ul className="mt-6 space-y-3 text-sm sm:text-base">
+                <ul className="mt-6 flex-grow space-y-3 text-sm sm:text-base">
                   {option.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-3">
                       <span className="mt-[2px] text-primary">✓</span>
@@ -40,15 +40,16 @@ export function SolutionChoiceSection() {
                   ))}
                 </ul>
 
-                <p className="mt-8 text-2xl font-bold text-primary">{option.priceText}</p>
-
-                <div className="mt-6">
-                  <MagneticButton
-                    href={option.cta.href}
-                    className="inline-flex w-full justify-center border-2 border-foreground px-6 py-3 text-sm font-semibold transition-all hover:bg-foreground hover:text-background"
-                  >
-                    {option.cta.text}
-                  </MagneticButton>
+                <div className="mt-8">
+                  <p className="text-2xl font-bold text-primary">{option.priceText}</p>
+                  <div className="mt-4">
+                    <MagneticButton
+                      href={option.cta.href}
+                      className="inline-flex w-full justify-center border-2 border-foreground px-6 py-3 text-sm font-semibold transition-all hover:bg-foreground hover:text-background"
+                    >
+                      {option.cta.text}
+                    </MagneticButton>
+                  </div>
                 </div>
               </SurfaceCard>
             </RevealOnScroll>
