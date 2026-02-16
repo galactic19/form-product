@@ -2,28 +2,26 @@
 
 import { MagneticButton } from '@/components/animations/MagneticButton'
 import { RevealOnScroll } from '@/components/animations/RevealOnScroll'
+import { SectionHeader } from '@/components/ui/SectionHeader'
+import { SurfaceCard } from '@/components/ui/SurfaceCard'
 import { solutionChoiceContent } from '@/lib/content'
 
 export function SolutionChoiceSection() {
   return (
     <section id="solution-choice" className="border-t border-border px-6 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl">
-        <RevealOnScroll>
-          <h2 className="text-4xl font-bold tracking-tight sm:text-6xl">
-            {solutionChoiceContent.title}
-          </h2>
-        </RevealOnScroll>
-
-        <RevealOnScroll delay={0.1}>
-          <p className="mt-4 text-lg text-foreground-muted sm:text-xl">
-            {solutionChoiceContent.subtitle}
-          </p>
-        </RevealOnScroll>
+        <SectionHeader title={solutionChoiceContent.title} subtitle={solutionChoiceContent.subtitle} />
 
         <div className="mt-12 grid gap-6 lg:grid-cols-2">
           {solutionChoiceContent.options.map((option, index) => (
             <RevealOnScroll key={option.id} direction="up" delay={index * 0.1}>
-              <article className="relative flex h-full flex-col border border-border bg-surface p-8 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_18px_44px_rgba(0,153,255,0.15)]">
+              <SurfaceCard
+                className={`relative flex h-full flex-col p-8 ${
+                  option.type === 'subscription'
+                    ? 'border-primary/50 shadow-[var(--glow-soft)]'
+                    : 'border-border hover:border-primary/40'
+                }`}
+              >
                 <span className="absolute right-4 top-4 border border-primary/40 bg-primary/10 px-2 py-1 text-xs font-semibold text-primary">
                   {option.type === 'template' ? '빠른 시작' : '관리 강화'}
                 </span>
@@ -47,12 +45,12 @@ export function SolutionChoiceSection() {
                 <div className="mt-6">
                   <MagneticButton
                     href={option.cta.href}
-                    className="inline-flex border-2 border-foreground px-6 py-3 text-sm font-semibold transition-all hover:bg-foreground hover:text-background"
+                    className="inline-flex w-full justify-center border-2 border-foreground px-6 py-3 text-sm font-semibold transition-all hover:bg-foreground hover:text-background"
                   >
                     {option.cta.text}
                   </MagneticButton>
                 </div>
-              </article>
+              </SurfaceCard>
             </RevealOnScroll>
           ))}
         </div>
