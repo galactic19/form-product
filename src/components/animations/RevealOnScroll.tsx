@@ -12,6 +12,7 @@ interface RevealOnScrollProps {
   direction?: 'up' | 'down' | 'left' | 'right'
   distance?: number
   delay?: number
+  once?: boolean // 애니메이션 한 번만 실행 여부
 }
 
 export function RevealOnScroll({
@@ -20,6 +21,7 @@ export function RevealOnScroll({
   direction = 'up',
   distance = 100,
   delay = 0,
+  once = true,
 }: RevealOnScrollProps) {
   const elementRef = useRef<HTMLDivElement>(null)
   const prefersReducedMotion = usePrefersReducedMotion()
@@ -59,11 +61,12 @@ export function RevealOnScroll({
           trigger: elementRef.current,
           start: 'top 80%',
           end: 'bottom 20%',
-          toggleActions: 'play none none reverse',
+          toggleActions: once ? 'play none none none' : 'play none none reverse',
+          once: once, // ScrollTrigger 자체 once 옵션도 활용
         },
       }
     )
-  }, [direction, distance, delay, prefersReducedMotion])
+  }, [direction, distance, delay, prefersReducedMotion, once])
 
   return (
     <div ref={elementRef} className={className}>

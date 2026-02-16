@@ -12,7 +12,7 @@ import { FinalCTASection } from '@/components/sections/FinalCTASection'
 
 export default function Home() {
   return (
-    <main>
+    <main className="pt-20 sm:pt-24">
       <HeroSection />
       <ProblemSection />
       <SolutionChoiceSection />
