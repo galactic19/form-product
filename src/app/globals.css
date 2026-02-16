@@ -87,29 +87,29 @@
 :root {
   --radius: 0rem;
   
-  /* 라이트 모드 (Lovable Partners Palette) */
-  --primary: #FF2477; /* Hot Pink */
+  /* 라이트 모드 (Refined Clean Palette) */
+  --primary: #FF2477; /* Hot Pink - Keep as accent */
   --primary-dark: #D11A5E;
-  --accent: #FE5F28; /* Bright Orange */
+  --accent: #FE5F28; /* Bright Orange - Keep as accent */
   --accent-dark: #D44A1C;
   
   --background: #FFFFFF;
-  --surface: #F6F3EB; /* Warm/Beige White for sections */
-  --surface-elevated: #FFFFFF; /* Cards often white on warm bg */
+  --surface: #FAFAFA; /* Clean, Neutral Off-White */
+  --surface-elevated: #FFFFFF; /* Pure White for cards */
   --surface-bright: #FFFFFF;
   
-  --foreground: #1A1A1A; /* High Contrast Dark */
-  --foreground-muted: #666666;
-  --foreground-subtle: #999999;
+  --foreground: #0F0F0F; /* Sharp, Jet Black */
+  --foreground-muted: #525252; /* Neutral Gray */
+  --foreground-subtle: #A3A3A3;
   
-  --border: rgba(0, 0, 0, 0.08); /* Subtle border for light mode */
-  --border-strong: rgba(0, 0, 0, 0.15);
-  --input: rgba(0, 0, 0, 0.08);
+  --border: #E5E5E5; /* Clean Light Gray Border */
+  --border-strong: #D4D4D4;
+  --input: #E5E5E5;
   --ring: #FF2477;
   
-  /* Shadows - Soft & Warm */
-  --glow-soft: 0 4px 12px rgba(0, 0, 0, 0.05);
-  --glow-strong: 0 8px 24px rgba(0, 0, 0, 0.08);
+  /* Shadows - Crisp & Modern */
+  --glow-soft: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --glow-strong: 0 8px 30px rgba(0, 0, 0, 0.08);
   
   /* Shadcn Mapping */
   --card: var(--surface-elevated);
@@ -119,17 +119,17 @@
   --primary-foreground: #FFFFFF;
   --secondary: var(--surface);
   --secondary-foreground: var(--foreground);
-  --muted: var(--surface);
+  --muted: #F5F5F5;
   --muted-foreground: var(--foreground-muted);
   --accent-foreground: #FFFFFF;
-  --destructive: #FF0000;
+  --destructive: #EF4444;
   --destructive-foreground: #FFFFFF;
   
   --chart-1: #FF2477;
   --chart-2: #FE5F28;
-  --chart-3: #1A1A1A;
-  --chart-4: #F6F3EB;
-  --chart-5: #666666;
+  --chart-3: #0F0F0F;
+  --chart-4: #E5E5E5;
+  --chart-5: #525252;
 }
 
 .dark {
@@ -176,8 +176,8 @@
   body {
     @apply bg-background text-foreground;
     background-image:
-      radial-gradient(circle at 10% -10%, color-mix(in srgb, var(--primary) 8%, transparent), transparent 35%),
-      radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--accent) 5%, transparent), transparent 28%);
+      radial-gradient(circle at 10% -10%, color-mix(in srgb, var(--primary) 3%, transparent), transparent 40%),
+      radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--accent) 2%, transparent), transparent 30%);
     text-rendering: optimizeLegibility;
   }
 }
@@ -200,3 +200,17 @@
 .animate-fade-in {
   animation: fade-in 0.6s ease-out;
 }
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
