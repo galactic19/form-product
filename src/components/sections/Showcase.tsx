@@ -5,16 +5,16 @@ import { RevealOnScroll } from '@/components/animations/RevealOnScroll'
 
 export function Showcase() {
   return (
-    <section className="py-24 px-6">
+    <section className="py-32 px-6 border-t border-border">
       <div className="max-w-7xl mx-auto">
         <RevealOnScroll>
-          <h2 className="text-5xl font-bold text-center mb-16">Showcase</h2>
+          <h2 className="text-7xl font-bold mb-24 tracking-tighter">Showcase</h2>
         </RevealOnScroll>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-16 md:grid-cols-2 lg:grid-cols-3">
           {showcaseItems.map((item, index) => (
             <RevealOnScroll key={item.id} direction="up" delay={index * 0.1}>
-              <ShowcaseCard item={item} />
+              <ShowcaseCard item={item} index={index + 1} />
             </RevealOnScroll>
           ))}
         </div>
@@ -23,30 +23,34 @@ export function Showcase() {
   )
 }
 
-function ShowcaseCard({ item }: { item: typeof showcaseItems[0] }) {
+function ShowcaseCard({ item, index }: { item: typeof showcaseItems[0]; index: number }) {
   return (
-    <div className="group relative overflow-hidden rounded-2xl border border-border bg-card shadow-lg transition-all hover:shadow-2xl">
-      {/* 이미지 플레이스홀더 */}
-      <div className="aspect-video bg-gradient-to-br from-primary/20 to-primary/5 transition-transform group-hover:scale-110">
-        <div className="flex h-full items-center justify-center text-4xl font-bold text-muted-foreground/20">
-          {item.title}
+    <div className="group">
+      {/* 이미지 영역 */}
+      <div className="aspect-[4/3] bg-surface border border-border mb-6 overflow-hidden relative">
+        <div className="absolute inset-0 flex items-center justify-center">
+          <span className="text-8xl font-bold text-foreground-subtle/20">
+            {String(index).padStart(2, '0')}
+          </span>
+        </div>
+        <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-background to-transparent">
+          <h3 className="text-3xl font-bold">{item.title}</h3>
         </div>
       </div>
 
-      {/* 콘텐츠 */}
-      <div className="p-6">
-        <h3 className="mb-2 text-2xl font-bold">{item.title}</h3>
-        <p className="mb-4 text-muted-foreground">{item.description}</p>
-        <div className="flex flex-wrap gap-2">
-          {item.tags.map((tag) => (
-            <span
-              key={tag}
-              className="rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
+      {/* 설명 */}
+      <p className="text-lg text-foreground-muted mb-4">{item.description}</p>
+
+      {/* 태그 */}
+      <div className="flex gap-3">
+        {item.tags.map((tag) => (
+          <span
+            key={tag}
+            className="text-sm font-mono text-foreground-subtle border-b border-foreground-subtle pb-1"
+          >
+            {tag}
+          </span>
+        ))}
       </div>
     </div>
   )

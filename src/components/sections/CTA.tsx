@@ -5,17 +5,16 @@ import { RevealOnScroll } from '@/components/animations/RevealOnScroll'
 
 export function CTA() {
   return (
-    <section className="relative py-32 px-6 overflow-hidden">
-      {/* Animated Background Gradient */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/20 via-primary/10 to-background animate-gradient-shift" />
-
-      <div className="max-w-4xl mx-auto text-center">
+    <section className="relative py-48 px-6 border-t border-border">
+      <div className="max-w-5xl mx-auto text-center">
         <RevealOnScroll direction="up">
-          <h2 className="text-5xl font-bold mb-6">Ready to Get Started?</h2>
+          <h2 className="text-8xl font-bold mb-12 tracking-tighter leading-none">
+            Ready to Get Started?
+          </h2>
         </RevealOnScroll>
 
         <RevealOnScroll direction="up" delay={0.2}>
-          <p className="text-xl text-muted-foreground mb-10">
+          <p className="text-2xl text-foreground-muted mb-16 max-w-3xl mx-auto leading-relaxed">
             Join thousands of users already transforming their workflow with our
             platform.
           </p>
@@ -25,14 +24,14 @@ export function CTA() {
           <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
             <MagneticButton
               href="#get-started"
-              className="rounded-lg bg-primary px-10 py-5 text-lg font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+              className="border-2 border-primary bg-primary px-12 py-6 text-lg font-semibold text-primary-foreground transition-all hover:bg-transparent hover:text-primary"
             >
               Start Free Trial
             </MagneticButton>
 
             <MagneticButton
               href="#contact"
-              className="rounded-lg border-2 border-input bg-background px-10 py-5 text-lg font-semibold transition-colors hover:bg-accent hover:text-accent-foreground"
+              className="border-2 border-foreground bg-transparent px-12 py-6 text-lg font-semibold transition-all hover:bg-foreground hover:text-background"
             >
               Contact Sales
             </MagneticButton>

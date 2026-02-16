@@ -5,16 +5,16 @@ import { RevealOnScroll } from '@/components/animations/RevealOnScroll'
 
 export function Features() {
   return (
-    <section className="py-24 px-6">
+    <section className="py-32 px-6 border-t border-border">
       <div className="max-w-7xl mx-auto">
         <RevealOnScroll>
-          <h2 className="text-5xl font-bold text-center mb-16">Features</h2>
+          <h2 className="text-7xl font-bold mb-24 tracking-tighter">Features</h2>
         </RevealOnScroll>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-20 lg:grid-cols-2">
           {features.map((feature, index) => (
             <RevealOnScroll key={feature.id} direction="up" delay={index * 0.1}>
-              <FeatureCard feature={feature} />
+              <FeatureCard feature={feature} index={index + 1} />
             </RevealOnScroll>
           ))}
         </div>
@@ -23,17 +23,16 @@ export function Features() {
   )
 }
 
-function FeatureCard({ feature }: { feature: typeof features[0] }) {
+function FeatureCard({ feature, index }: { feature: typeof features[0]; index: number }) {
   return (
-    <div className="rounded-2xl border border-border bg-card p-8 shadow-lg transition-transform hover:scale-105">
-      <div
-        className="mb-4 text-6xl"
-        style={{ filter: `drop-shadow(0 0 20px ${feature.color})` }}
-      >
-        {feature.icon}
+    <div className="flex gap-8 items-start group">
+      <div className="text-5xl font-bold text-foreground-subtle group-hover:text-primary transition-colors">
+        {String(index).padStart(2, '0')}
       </div>
-      <h3 className="mb-3 text-2xl font-bold">{feature.title}</h3>
-      <p className="text-muted-foreground">{feature.description}</p>
+      <div className="flex-1">
+        <h3 className="text-3xl font-bold mb-4">{feature.title}</h3>
+        <p className="text-xl text-foreground-muted leading-relaxed">{feature.description}</p>
+      </div>
     </div>
   )
 }
