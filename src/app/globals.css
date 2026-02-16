@@ -50,7 +50,40 @@
 :root {
   --radius: 0rem;
   
-  /* 미니멀 색상 시스템 */
+  /* 라이트 모드 미니멀 색상 시스템 (기본) */
+  --primary: #0099FF;
+  --primary-dark: #0077CC;
+  --accent: #000000;
+  --accent-dark: #333333;
+  
+  --background: #FFFFFF;
+  --surface: #F5F5F5;
+  --surface-bright: #E5E5E5;
+  
+  --foreground: #000000;
+  --foreground-muted: #666666;
+  --foreground-subtle: #999999;
+  
+  --border: #E5E5E5;
+  --input: #E5E5E5;
+  --ring: #0099FF;
+  
+  /* Legacy compatibility */
+  --card: var(--surface);
+  --card-foreground: var(--foreground);
+  --popover: var(--surface);
+  --popover-foreground: var(--foreground);
+  --primary-foreground: #FFFFFF;
+  --secondary: var(--surface-bright);
+  --secondary-foreground: var(--foreground);
+  --muted: var(--surface);
+  --muted-foreground: var(--foreground-muted);
+  --accent-foreground: #FFFFFF;
+  --destructive: #FF0000;
+}
+
+.dark {
+  /* 다크 모드 미니멀 색상 시스템 */
   --primary: #00FFFF;
   --primary-dark: #00CCCC;
   --accent: #FFFFFF;
@@ -80,10 +113,6 @@
   --muted-foreground: var(--foreground-muted);
   --accent-foreground: #000000;
   --destructive: #FF0000;
-}
-
-.dark {
-  /* Dark mode = 기본 모드 (Liquid Motion은 dark-first) */
 }
 
 @layer base {
