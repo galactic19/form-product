@@ -164,7 +164,7 @@ export interface TemplateDetailContent {
 }
 
 export const templateDetailContent: TemplateDetailContent = {
-  title: '외주 대신, 검증된 템플릿으로 시작',
+  title: '비용 부담 줄이고, 템플릿으로 빠르게 시작',
   subtitle: '가입상품 영업에 맞춘 템플릿을 빠르게 적용하세요',
   templates: [
     {
