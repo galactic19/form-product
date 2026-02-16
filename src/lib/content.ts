@@ -171,28 +171,28 @@ export const templateDetailContent: TemplateDetailContent = {
       name: '인터넷/TV 가입 신청',
       icon: '🌐',
       description: '통신사별 요금제 선택, 설치 주소 입력 폼',
-      mockupImage: '/images/template-internet.png',
+      mockupImage: '/images/landing/templates/template-internet.png',
     },
     {
       id: 2,
       name: '정수기/렌탈 상담 신청',
       icon: '💧',
       description: '제품별 옵션, 설치 희망일, 상담 시간 선택',
-      mockupImage: '/images/template-rental.png',
+      mockupImage: '/images/landing/templates/template-rental.png',
     },
     {
       id: 3,
       name: '보험 상담 신청',
       icon: '🛡',
       description: '보험 유형, 가입 목적, 상담 가능 시간',
-      mockupImage: '/images/template-insurance.png',
+      mockupImage: '/images/landing/templates/template-insurance.png',
     },
     {
       id: 4,
       name: '범용 가입상품',
       icon: '📱',
       description: '모든 가입상품에 사용 가능한 기본 템플릿',
-      mockupImage: '/images/template-general.png',
+      mockupImage: '/images/landing/templates/template-general.png',
     },
   ],
   pricing: [
@@ -495,12 +495,12 @@ export const screenPreviewContent: ScreenPreviewContent = {
   subtitle: '깔끔한 디자인 = 고객 신뢰',
   before: {
     label: 'Before',
-    image: '/images/screen-before.png',
+    image: '/images/landing/preview/screen-before.png',
     caption: '구글폼 - "이거 사기 아니에요?"',
   },
   after: {
     label: 'After',
-    image: '/images/screen-after.png',
+    image: '/images/landing/preview/screen-after.png',
     caption: '우리 폼 - "제대로 된 업체네"',
   },
   bottomCopy:
