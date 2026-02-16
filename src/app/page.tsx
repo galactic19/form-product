@@ -87,9 +87,9 @@ export default function Home() {
     <main className="min-h-screen bg-background text-foreground">
       <HeroSection />
       <ProblemSection />
-      <SolutionChoiceSection />
       <TemplateDetailSection />
       <SubscriptionDetailSection />
+      <SolutionChoiceSection />
       <PricingSection />
       <HowItWorksSection />
       <ScreenPreviewSection />
