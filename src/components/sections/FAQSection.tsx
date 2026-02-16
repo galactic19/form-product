@@ -17,10 +17,10 @@ export function FAQSection() {
         <div className="mt-10 space-y-4">
           {faqContent.faqs.map((faq, index) => (
             <RevealOnScroll key={faq.id} direction="up" delay={index * 0.05}>
-              <details className="group border border-border bg-surface px-5 py-4">
+              <details className="group border border-border bg-[color:var(--surface-elevated)] px-5 py-4 transition-all duration-300 open:border-primary/35 open:shadow-[var(--glow-soft)]">
                 <summary className="cursor-pointer list-none pr-8 text-base font-semibold sm:text-lg">
                   {faq.question}
-                  <span className="float-right text-primary transition-transform group-open:rotate-45">
+                  <span className="float-right inline-flex h-6 w-6 items-center justify-center border border-primary/35 bg-primary/10 text-primary transition-transform group-open:rotate-45">
                     +
                   </span>
                 </summary>

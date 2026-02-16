@@ -21,7 +21,7 @@ export function TemplateDetailSection() {
         <div className="mt-12 grid gap-6 md:grid-cols-2">
           {templateDetailContent.templates.map((template, index) => (
             <RevealOnScroll key={template.id} direction="up" delay={index * 0.1}>
-              <article className="border border-border bg-surface p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_16px_42px_rgba(0,153,255,0.14)]">
+              <article className="border border-border bg-[color:var(--surface-elevated)] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[var(--glow-soft)]">
                 <div className="mb-5 aspect-[4/3] border border-border bg-[linear-gradient(130deg,rgba(0,153,255,0.2),rgba(0,0,0,0))] p-4">
                   <p className="text-sm font-semibold text-primary">모바일 목업 플레이스홀더</p>
                   <div className="mt-3 space-y-2">
@@ -46,11 +46,13 @@ export function TemplateDetailSection() {
         </div>
 
         <RevealOnScroll delay={0.2}>
-          <div className="mt-12 overflow-hidden border border-border">
+          <div className="mt-12 overflow-hidden border border-border bg-[color:var(--surface-elevated)]">
             {templateDetailContent.pricing.map((item, index) => (
               <div
                 key={item.item}
-                className="grid gap-2 border-b border-border bg-background px-5 py-4 last:border-b-0 md:grid-cols-[1fr_auto_1.3fr]"
+                className={`grid gap-2 border-b border-border px-5 py-4 last:border-b-0 md:grid-cols-[1fr_auto_1.3fr] ${
+                  index === 0 ? 'bg-primary/10' : 'bg-background'
+                }`}
               >
                 <p className="font-semibold">{item.item}</p>
                 <p className="font-semibold text-primary">{item.price}</p>

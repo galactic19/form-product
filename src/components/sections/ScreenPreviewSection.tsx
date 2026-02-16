@@ -13,8 +13,10 @@ function PreviewCard({
   type: 'before' | 'after'
 }) {
   return (
-    <article className="border border-border bg-surface p-5">
-      <p className="text-sm font-semibold text-foreground-muted">{label}</p>
+    <article className="border border-border bg-[color:var(--surface-elevated)] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/35 hover:shadow-[var(--glow-soft)]">
+      <p className="inline-flex border border-border bg-background px-2 py-1 text-sm font-semibold text-foreground-muted">
+        {label}
+      </p>
       <div
         className={`mt-4 aspect-[9/16] border p-4 ${
           type === 'before'
@@ -31,7 +33,7 @@ function PreviewCard({
           <div className="h-8 w-full border border-border bg-background/70" />
         </div>
       </div>
-      <p className="mt-4 text-sm font-semibold text-primary">{caption}</p>
+      <p className="mt-4 border-l-2 border-primary pl-3 text-sm font-semibold text-primary">{caption}</p>
     </article>
   )
 }

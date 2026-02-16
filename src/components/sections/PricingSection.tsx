@@ -20,11 +20,11 @@ export function PricingSection() {
 
         <div className="mt-12 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
           <RevealOnScroll direction="up">
-            <div className="h-full border border-border bg-surface p-6">
+            <div className="h-full border border-border bg-[color:var(--surface-elevated)] p-6">
               <h3 className="text-2xl font-semibold">{pricingContent.templatePricing.title}</h3>
               <p className="mt-2 text-sm text-foreground-muted">{pricingContent.templatePricing.description}</p>
 
-              <div className="mt-6 overflow-hidden border border-border">
+              <div className="mt-6 overflow-hidden border border-border bg-background">
                 {pricingContent.templatePricing.items.map((item) => (
                   <div
                     key={item.item}
@@ -39,7 +39,7 @@ export function PricingSection() {
           </RevealOnScroll>
 
           <RevealOnScroll direction="up" delay={0.1}>
-            <div className="h-full border border-border bg-surface p-6">
+            <div className="h-full border border-border bg-[color:var(--surface-elevated)] p-6">
               <h3 className="text-2xl font-semibold">{pricingContent.subscriptionPricing.title}</h3>
               <p className="mt-2 text-sm text-foreground-muted">
                 {pricingContent.subscriptionPricing.description}
@@ -49,10 +49,10 @@ export function PricingSection() {
                 {pricingContent.subscriptionPricing.plans.map((plan) => (
                   <article
                     key={plan.id}
-                    className={`border p-4 ${
+                    className={`border p-4 transition-all duration-300 hover:-translate-y-1 ${
                       plan.isRecommended
                         ? 'relative border-primary bg-primary/10 shadow-[0_16px_40px_rgba(0,153,255,0.18)]'
-                        : 'border-border bg-background'
+                        : 'border-border bg-background hover:border-primary/35 hover:shadow-[var(--glow-soft)]'
                     }`}
                   >
                     {plan.isRecommended && (

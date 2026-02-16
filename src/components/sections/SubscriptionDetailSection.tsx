@@ -21,7 +21,7 @@ export function SubscriptionDetailSection() {
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
           {subscriptionDetailContent.features.map((feature, index) => (
             <RevealOnScroll key={feature.id} direction="up" delay={index * 0.1}>
-              <article className="h-full border border-border bg-surface p-7">
+              <article className="h-full border border-border bg-[color:var(--surface-elevated)] p-7 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[var(--glow-soft)]">
                 <div className="flex items-start justify-between gap-3">
                   <div className="text-3xl" aria-hidden="true">
                     {feature.icon}

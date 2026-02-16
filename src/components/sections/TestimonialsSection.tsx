@@ -19,7 +19,7 @@ export function TestimonialsSection() {
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
           {testimonialsContent.testimonials.map((testimonial, index) => (
             <RevealOnScroll key={testimonial.id} direction="up" delay={index * 0.1}>
-              <article className="h-full border border-border bg-surface p-6">
+              <article className="h-full border border-border bg-[color:var(--surface-elevated)] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/35 hover:shadow-[var(--glow-soft)]">
                 <p className="text-3xl leading-none text-primary">“</p>
                 <p className="mt-4 whitespace-pre-line text-sm leading-relaxed text-foreground-muted sm:text-base">
                   {testimonial.quote}
