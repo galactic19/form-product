@@ -12,9 +12,9 @@ export function SurfaceCard({ children, className, interactive = true }: Surface
   return (
     <article
       className={cn(
-        'border border-border bg-[color:var(--surface-elevated)] p-6',
+        'flex flex-col border border-border bg-[color:var(--surface-elevated)] p-6',
         interactive &&
-          'transition-all duration-300 hover:-translate-y-1 hover:border-primary/35 hover:shadow-[var(--glow-soft)]',
+          'transition-all duration-300 hover:-translate-y-1 hover:border-primary/50',
         className
       )}
     >

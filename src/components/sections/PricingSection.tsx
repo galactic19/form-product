@@ -46,7 +46,7 @@ export function PricingSection() {
                 {pricingContent.subscriptionPricing.plans.map((plan) => (
                   <article
                     key={plan.id}
-                    className={`border p-4 transition-all duration-300 hover:-translate-y-1 ${
+                    className={`flex flex-col border p-4 transition-all duration-300 hover:-translate-y-1 ${
                       plan.isRecommended
                         ? 'relative border-primary bg-primary/10 shadow-[0_16px_40px_rgba(0,153,255,0.18)]'
                         : 'border-border bg-background hover:border-primary/35 hover:shadow-[var(--glow-soft)]'
@@ -63,7 +63,7 @@ export function PricingSection() {
                     </p>
                     <p className="mt-1 text-2xl font-bold text-primary">{plan.price}</p>
 
-                    <ul className="mt-4 space-y-1 text-xs text-foreground-muted">
+                    <ul className="mt-4 flex-grow space-y-1 text-xs text-foreground-muted">
                       <li>폼: {plan.features.forms}</li>
                       <li>월 응답: {plan.features.responses}</li>
                       <li>카톡 알림: {booleanToMark(plan.features.kakaoNotification)}</li>
