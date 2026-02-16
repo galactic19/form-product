@@ -1,0 +1,91 @@
+'use client'
+
+import { RevealOnScroll } from '@/components/animations/RevealOnScroll'
+import { pricingContent } from '@/lib/content'
+
+function booleanToMark(value: boolean) {
+  return value ? '✓' : '✕'
+}
+
+export function PricingSection() {
+  return (
+    <section id="pricing" className="border-t border-border px-6 py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl">
+        <RevealOnScroll>
+          <h2 className="text-4xl font-bold tracking-tight sm:text-6xl">{pricingContent.title}</h2>
+        </RevealOnScroll>
+        <RevealOnScroll delay={0.1}>
+          <p className="mt-4 text-lg text-foreground-muted sm:text-xl">{pricingContent.subtitle}</p>
+        </RevealOnScroll>
+
+        <div className="mt-12 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+          <RevealOnScroll direction="up">
+            <div className="h-full border border-border bg-surface p-6">
+              <h3 className="text-2xl font-semibold">{pricingContent.templatePricing.title}</h3>
+              <p className="mt-2 text-sm text-foreground-muted">{pricingContent.templatePricing.description}</p>
+
+              <div className="mt-6 overflow-hidden border border-border">
+                {pricingContent.templatePricing.items.map((item) => (
+                  <div
+                    key={item.item}
+                    className="flex items-center justify-between border-b border-border px-4 py-3 text-sm last:border-b-0"
+                  >
+                    <span>{item.item}</span>
+                    <span className="font-semibold text-primary">{item.price}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </RevealOnScroll>
+
+          <RevealOnScroll direction="up" delay={0.1}>
+            <div className="h-full border border-border bg-surface p-6">
+              <h3 className="text-2xl font-semibold">{pricingContent.subscriptionPricing.title}</h3>
+              <p className="mt-2 text-sm text-foreground-muted">
+                {pricingContent.subscriptionPricing.description}
+              </p>
+
+              <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                {pricingContent.subscriptionPricing.plans.map((plan) => (
+                  <article
+                    key={plan.id}
+                    className={`border p-4 ${
+                      plan.isRecommended
+                        ? 'border-primary bg-primary/10'
+                        : 'border-border bg-background'
+                    }`}
+                  >
+                    <p className="text-sm font-semibold text-foreground-muted">
+                      {plan.name}
+                      {plan.isRecommended ? ' (추천)' : ''}
+                    </p>
+                    <p className="mt-1 text-2xl font-bold text-primary">{plan.price}</p>
+
+                    <ul className="mt-4 space-y-1 text-xs text-foreground-muted">
+                      <li>폼: {plan.features.forms}</li>
+                      <li>월 응답: {plan.features.responses}</li>
+                      <li>카톡 알림: {booleanToMark(plan.features.kakaoNotification)}</li>
+                      <li>고객 메시지: {booleanToMark(plan.features.kakaoCustomerMessage)}</li>
+                      <li>엑셀 다운: {booleanToMark(plan.features.excelDownload)}</li>
+                      <li>구글시트: {booleanToMark(plan.features.googleSheetSync)}</li>
+                      <li>브랜딩: {booleanToMark(plan.features.branding)}</li>
+                      <li>대시보드: {plan.features.adminDashboard}</li>
+                      <li>팀원: {plan.features.teamMembers}</li>
+                    </ul>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </RevealOnScroll>
+        </div>
+
+        <RevealOnScroll delay={0.2}>
+          <div className="mt-8 space-y-2 text-sm sm:text-base">
+            <p className="font-semibold text-primary">{pricingContent.conversionOffer}</p>
+            <p className="text-foreground-muted">{pricingContent.bottomNote}</p>
+          </div>
+        </RevealOnScroll>
+      </div>
+    </section>
+  )
+}
