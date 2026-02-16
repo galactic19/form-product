@@ -51,10 +51,15 @@ export function PricingSection() {
                     key={plan.id}
                     className={`border p-4 ${
                       plan.isRecommended
-                        ? 'border-primary bg-primary/10'
+                        ? 'relative border-primary bg-primary/10 shadow-[0_16px_40px_rgba(0,153,255,0.18)]'
                         : 'border-border bg-background'
                     }`}
                   >
+                    {plan.isRecommended && (
+                      <span className="absolute right-3 top-3 border border-primary bg-primary px-2 py-1 text-[10px] font-bold text-primary-foreground">
+                        BEST
+                      </span>
+                    )}
                     <p className="text-sm font-semibold text-foreground-muted">
                       {plan.name}
                       {plan.isRecommended ? ' (추천)' : ''}

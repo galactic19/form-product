@@ -22,8 +22,14 @@ export function SubscriptionDetailSection() {
           {subscriptionDetailContent.features.map((feature, index) => (
             <RevealOnScroll key={feature.id} direction="up" delay={index * 0.1}>
               <article className="h-full border border-border bg-surface p-7">
-                <div className="text-3xl" aria-hidden="true">
-                  {feature.icon}
+                <div className="flex items-start justify-between gap-3">
+                  <div className="text-3xl" aria-hidden="true">
+                    {feature.icon}
+                  </div>
+                  <span className="inline-flex items-center gap-1 border border-primary/50 bg-primary/10 px-2 py-1 text-xs font-semibold text-primary">
+                    <span aria-hidden="true">🔒</span>
+                    구독 전용
+                  </span>
                 </div>
                 <h3 className="mt-4 text-2xl font-semibold leading-snug">{feature.title}</h3>
                 <p className="mt-4 whitespace-pre-line text-sm leading-relaxed text-foreground-muted sm:text-base">

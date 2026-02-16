@@ -21,7 +21,7 @@ export function TemplateDetailSection() {
         <div className="mt-12 grid gap-6 md:grid-cols-2">
           {templateDetailContent.templates.map((template, index) => (
             <RevealOnScroll key={template.id} direction="up" delay={index * 0.1}>
-              <article className="border border-border bg-surface p-5">
+              <article className="border border-border bg-surface p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_16px_42px_rgba(0,153,255,0.14)]">
                 <div className="mb-5 aspect-[4/3] border border-border bg-[linear-gradient(130deg,rgba(0,153,255,0.2),rgba(0,0,0,0))] p-4">
                   <p className="text-sm font-semibold text-primary">모바일 목업 플레이스홀더</p>
                   <div className="mt-3 space-y-2">

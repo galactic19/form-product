@@ -7,7 +7,7 @@ import { finalCTAContent } from '@/lib/content'
 export function FinalCTASection() {
   return (
     <section id="final-cta" className="border-t border-border px-6 py-24 sm:py-32">
-      <div className="mx-auto max-w-5xl text-center">
+      <div className="mx-auto max-w-5xl border border-border bg-[linear-gradient(145deg,rgba(0,153,255,0.18),rgba(0,0,0,0))] px-6 py-12 text-center sm:px-10 sm:py-16">
         <RevealOnScroll>
           <h2 className="text-4xl font-bold tracking-tight sm:text-6xl">{finalCTAContent.headline}</h2>
         </RevealOnScroll>
