@@ -1,18 +1,14 @@
 'use client'
 
 import { RevealOnScroll } from '@/components/animations/RevealOnScroll'
+import { SectionHeader } from '@/components/ui/SectionHeader'
 import { faqContent } from '@/lib/content'
 
 export function FAQSection() {
   return (
     <section id="faq" className="border-t border-border px-6 py-24 sm:py-32">
       <div className="mx-auto max-w-4xl">
-        <RevealOnScroll>
-          <h2 className="text-4xl font-bold tracking-tight sm:text-6xl">{faqContent.title}</h2>
-        </RevealOnScroll>
-        <RevealOnScroll delay={0.1}>
-          <p className="mt-4 text-lg text-foreground-muted sm:text-xl">{faqContent.subtitle}</p>
-        </RevealOnScroll>
+        <SectionHeader title={faqContent.title} subtitle={faqContent.subtitle} />
 
         <div className="mt-10 space-y-4">
           {faqContent.faqs.map((faq, index) => (

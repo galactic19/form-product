@@ -1,6 +1,8 @@
 'use client'
 
 import { RevealOnScroll } from '@/components/animations/RevealOnScroll'
+import { SectionHeader } from '@/components/ui/SectionHeader'
+import { SurfaceCard } from '@/components/ui/SurfaceCard'
 import { howItWorksContent } from '@/lib/content'
 
 function FlowCard({
@@ -11,7 +13,7 @@ function FlowCard({
   steps: { step: number; title: string; description: string }[]
 }) {
   return (
-    <article className="border border-border bg-[color:var(--surface-elevated)] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/35 hover:shadow-[var(--glow-soft)]">
+    <SurfaceCard className="p-6">
       <h3 className="text-2xl font-semibold">{title}</h3>
 
       <ol className="mt-6 space-y-4">
@@ -27,7 +29,7 @@ function FlowCard({
           </li>
         ))}
       </ol>
-    </article>
+    </SurfaceCard>
   )
 }
 
@@ -35,14 +37,7 @@ export function HowItWorksSection() {
   return (
     <section id="how-it-works" className="border-t border-border px-6 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl">
-        <RevealOnScroll>
-          <h2 className="text-4xl font-bold tracking-tight sm:text-6xl">
-            {howItWorksContent.title}
-          </h2>
-        </RevealOnScroll>
-        <RevealOnScroll delay={0.1}>
-          <p className="mt-4 text-lg text-foreground-muted sm:text-xl">{howItWorksContent.subtitle}</p>
-        </RevealOnScroll>
+        <SectionHeader title={howItWorksContent.title} subtitle={howItWorksContent.subtitle} />
 
         <div className="mt-12 grid gap-6 lg:grid-cols-2">
           <RevealOnScroll direction="up">

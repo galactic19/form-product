@@ -1,6 +1,8 @@
 'use client'
 
 import { RevealOnScroll } from '@/components/animations/RevealOnScroll'
+import { SectionHeader } from '@/components/ui/SectionHeader'
+import { SurfaceCard } from '@/components/ui/SurfaceCard'
 import { pricingContent } from '@/lib/content'
 
 function booleanToMark(value: boolean) {
@@ -11,16 +13,11 @@ export function PricingSection() {
   return (
     <section id="pricing" className="border-t border-border px-6 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl">
-        <RevealOnScroll>
-          <h2 className="text-4xl font-bold tracking-tight sm:text-6xl">{pricingContent.title}</h2>
-        </RevealOnScroll>
-        <RevealOnScroll delay={0.1}>
-          <p className="mt-4 text-lg text-foreground-muted sm:text-xl">{pricingContent.subtitle}</p>
-        </RevealOnScroll>
+        <SectionHeader title={pricingContent.title} subtitle={pricingContent.subtitle} />
 
         <div className="mt-12 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
           <RevealOnScroll direction="up">
-            <div className="h-full border border-border bg-[color:var(--surface-elevated)] p-6">
+            <SurfaceCard className="h-full p-6" interactive={false}>
               <h3 className="text-2xl font-semibold">{pricingContent.templatePricing.title}</h3>
               <p className="mt-2 text-sm text-foreground-muted">{pricingContent.templatePricing.description}</p>
 
@@ -35,11 +32,11 @@ export function PricingSection() {
                   </div>
                 ))}
               </div>
-            </div>
+            </SurfaceCard>
           </RevealOnScroll>
 
           <RevealOnScroll direction="up" delay={0.1}>
-            <div className="h-full border border-border bg-[color:var(--surface-elevated)] p-6">
+            <SurfaceCard className="h-full p-6" interactive={false}>
               <h3 className="text-2xl font-semibold">{pricingContent.subscriptionPricing.title}</h3>
               <p className="mt-2 text-sm text-foreground-muted">
                 {pricingContent.subscriptionPricing.description}
@@ -80,7 +77,7 @@ export function PricingSection() {
                   </article>
                 ))}
               </div>
-            </div>
+            </SurfaceCard>
           </RevealOnScroll>
         </div>
 

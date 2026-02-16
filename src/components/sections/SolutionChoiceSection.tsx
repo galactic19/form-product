@@ -2,29 +2,21 @@
 
 import { MagneticButton } from '@/components/animations/MagneticButton'
 import { RevealOnScroll } from '@/components/animations/RevealOnScroll'
+import { SectionHeader } from '@/components/ui/SectionHeader'
+import { SurfaceCard } from '@/components/ui/SurfaceCard'
 import { solutionChoiceContent } from '@/lib/content'
 
 export function SolutionChoiceSection() {
   return (
     <section id="solution-choice" className="border-t border-border px-6 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl">
-        <RevealOnScroll>
-          <h2 className="text-4xl font-bold tracking-tight sm:text-6xl">
-            {solutionChoiceContent.title}
-          </h2>
-        </RevealOnScroll>
-
-        <RevealOnScroll delay={0.1}>
-          <p className="mt-4 text-lg text-foreground-muted sm:text-xl">
-            {solutionChoiceContent.subtitle}
-          </p>
-        </RevealOnScroll>
+        <SectionHeader title={solutionChoiceContent.title} subtitle={solutionChoiceContent.subtitle} />
 
         <div className="mt-12 grid gap-6 lg:grid-cols-2">
           {solutionChoiceContent.options.map((option, index) => (
             <RevealOnScroll key={option.id} direction="up" delay={index * 0.1}>
-              <article
-                className={`relative flex h-full flex-col border bg-[color:var(--surface-elevated)] p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--glow-soft)] ${
+              <SurfaceCard
+                className={`relative flex h-full flex-col p-8 ${
                   option.type === 'subscription'
                     ? 'border-primary/50 shadow-[var(--glow-soft)]'
                     : 'border-border hover:border-primary/40'
@@ -58,7 +50,7 @@ export function SolutionChoiceSection() {
                     {option.cta.text}
                   </MagneticButton>
                 </div>
-              </article>
+              </SurfaceCard>
             </RevealOnScroll>
           ))}
         </div>
