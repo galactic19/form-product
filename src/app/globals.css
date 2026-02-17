@@ -2,32 +2,7 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
-@font-face {
-  font-family: "GmarketSans";
-  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff")
-    format("woff");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
 
-@font-face {
-  font-family: "GmarketSans";
-  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
-    format("woff");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "GmarketSans";
-  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff")
-    format("woff");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
 
 @custom-variant dark (&:is(.dark *));
 
@@ -76,7 +51,6 @@
 
 .font-korean {
   font-family:
-    "GmarketSans",
     var(--font-noto-sans-kr),
     "Noto Sans KR",
     "Apple SD Gothic Neo",
@@ -87,40 +61,49 @@
 :root {
   --radius: 0rem;
   
-  /* 라이트 모드 미니멀 색상 시스템 (기본) */
-  --primary: #0099FF;
-  --primary-dark: #0077CC;
-  --accent: #000000;
-  --accent-dark: #333333;
+  /* 라이트 모드 (Refined Clean Palette) */
+  --primary: #FF2477; /* Hot Pink - Keep as accent */
+  --primary-dark: #D11A5E;
+  --accent: #FE5F28; /* Bright Orange - Keep as accent */
+  --accent-dark: #D44A1C;
   
   --background: #FFFFFF;
-  --surface: #F5F5F5;
-  --surface-elevated: #FCFCFC;
-  --surface-bright: #E5E5E5;
+  --surface: #FAFAFA; /* Clean, Neutral Off-White */
+  --surface-elevated: #FFFFFF; /* Pure White for cards */
+  --surface-bright: #FFFFFF;
   
-  --foreground: #000000;
-  --foreground-muted: #666666;
-  --foreground-subtle: #999999;
+  --foreground: #0F0F0F; /* Sharp, Jet Black */
+  --foreground-muted: #525252; /* Neutral Gray */
+  --foreground-subtle: #A3A3A3;
   
-  --border: #E5E5E5;
-  --border-strong: #D6D6D6;
+  --border: #E5E5E5; /* Clean Light Gray Border */
+  --border-strong: #D4D4D4;
   --input: #E5E5E5;
-  --ring: #0099FF;
-  --glow-soft: 0 4px 12px rgba(0, 0, 0, 0.04);
-  --glow-strong: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --ring: #FF2477;
   
-  /* Legacy compatibility */
-  --card: var(--surface);
+  /* Shadows - Crisp & Modern */
+  --glow-soft: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --glow-strong: 0 8px 30px rgba(0, 0, 0, 0.08);
+  
+  /* Shadcn Mapping */
+  --card: var(--surface-elevated);
   --card-foreground: var(--foreground);
-  --popover: var(--surface);
+  --popover: var(--surface-elevated);
   --popover-foreground: var(--foreground);
   --primary-foreground: #FFFFFF;
-  --secondary: var(--surface-bright);
+  --secondary: var(--surface);
   --secondary-foreground: var(--foreground);
-  --muted: var(--surface);
+  --muted: #F5F5F5;
   --muted-foreground: var(--foreground-muted);
   --accent-foreground: #FFFFFF;
-  --destructive: #FF0000;
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+  
+  --chart-1: #FF2477;
+  --chart-2: #FE5F28;
+  --chart-3: #0F0F0F;
+  --chart-4: #E5E5E5;
+  --chart-5: #525252;
 }
 
 .dark {
@@ -167,8 +150,8 @@
   body {
     @apply bg-background text-foreground;
     background-image:
-      radial-gradient(circle at 10% -10%, rgba(0, 153, 255, 0.08), transparent 35%),
-      radial-gradient(circle at 100% 0%, rgba(0, 153, 255, 0.05), transparent 28%);
+      radial-gradient(circle at 10% -10%, color-mix(in srgb, var(--primary) 3%, transparent), transparent 40%),
+      radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--accent) 2%, transparent), transparent 30%);
     text-rendering: optimizeLegibility;
   }
 }
@@ -191,3 +174,17 @@
 .animate-fade-in {
   animation: fade-in 0.6s ease-out;
 }
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
