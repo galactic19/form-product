@@ -18,12 +18,12 @@ export interface HeroContent {
 }
 
 export const heroContent: HeroContent = {
-  headline: "가입상품 상담, 아직도 카톡으로 받고 계신가요?",
+  headline: "온라인 영업 채널을 열어 보세요",
   subheadline:
-    "인터넷, TV, 렌탈, 보험 영업에 맞춘 전용 신청폼.\n템플릿으로 빠르게 시작하고, 필요할 때 구독형 관리로 확장하세요.",
+    "인터넷, TV, 렌탈, 보험 영업에 맞춘 전용 신청폼.\n블로그, SNS, 광고 어디든 연결되는 나만의 상담 채널을 만드세요.",
   cta: {
-    primary: { text: "템플릿 바로 보기", href: "#template-detail" },
-    secondary: { text: "무료 체험 시작", href: "#subscription-detail" },
+    primary: { text: "템플릿 둘러보기", href: "#template-detail" },
+    secondary: { text: "묻는 체험하기", href: "#subscription-detail" },
   },
 };
 
@@ -46,29 +46,29 @@ export interface ProblemContent {
 }
 
 export const problemContent: ProblemContent = {
-  title: "혹시, 이런 상황이 반복되나요?",
-  subtitle: "가입상품 상담 현장에서 자주 놓치는 순간들",
+  title: "혹시, 이런 고민 하고 계신가요?",
+  subtitle: "온라인 영업을 시작하고 싶지만 막막한 순간들",
   scenarios: [
     {
       id: 1,
-      title: "카톡 상담 과부하",
+      title: "플랫폼에 입점하고 싶지 않아요",
       icon: "💬",
       description:
-        '"이름, 연락처, 주소, 상품..." 같은 질문을 반복하다가\n대화가 끊기고 필요한 정보가 빠집니다.',
+        "플랫폼 수수료가 부담스럽고, 가입상품은 입점이 어렵습니다.\n독립적인 채널이 필요합니다.",
     },
     {
       id: 2,
-      title: "신뢰 낮은 폼",
+      title: "구글폼은 신뢰가 안 가요",
       icon: "📋",
       description:
-        '링크를 보낸 뒤 "이거 믿어도 되나요?"라는 반응이 나옵니다.\n폼 첫인상 때문에 상담 기회가 줄어듭니다.',
+        '링크를 본 뒤 "이거 믿어도 되나요?"라는 반응이 나옵니다.\n전문적인 인상이 필요합니다.',
     },
     {
       id: 3,
-      title: "외주 비용 부담",
+      title: "외주는 비싸고 번거로워요",
       icon: "💸",
       description:
-        "제대로 만들려니 견적이 80만원 안팎.\n상품이 바뀔 때마다 수정비가 추가됩니다.",
+        "제대로 만들려니 견적이 80만원 안팎.\n상품이 바뀔 때마다 수정이 어렵습니다.",
     },
   ],
 };
@@ -97,43 +97,44 @@ export interface SolutionChoiceContent {
 }
 
 export const solutionChoiceContent: SolutionChoiceContent = {
-  title: "지금 상황에 맞게 시작하세요",
-  subtitle: "빠르게 쓰는 템플릿, 직접 운영하는 구독 서비스",
+  title: "상황에 맞게 선택하세요",
+  subtitle: "템플릿으로 빠르게 시작하거나, 구독으로 직접 운영하세요",
   options: [
     {
       id: 1,
       type: "template",
       icon: "💼",
       title: "템플릿 구매",
-      subtitle: "빠르게 도입하세요",
+      subtitle: "만들어 드립니다",
       features: [
-        "업종 맞춤 원페이지",
-        "모바일 최적화 구성",
-        "링크 즉시 배포",
+        "업종별 최적화 원페이지",
+        "모바일 반응형 디자인",
+        "링크 바로 사용",
         "1회 수정 포함",
+        "호스팅 포함",
       ],
-      priceText: "5만원부터 (1회)",
-      cta: { text: "템플릿 자세히 보기", href: "#template-detail" },
+      priceText: "₩150,000 (1회)",
+      cta: { text: "템플릿 보기", href: "#template-detail" },
     },
     {
       id: 2,
       type: "subscription",
       icon: "🚀",
       title: "구독 서비스",
-      subtitle: "직접 운영하세요",
+      subtitle: "직접 관리하세요",
       features: [
-        "폼 자유 생성 및 수정",
-        "카카오톡 알림",
+        "폼 무제한 생성/수정",
+        "카카오톡 실시간 알림",
         "고객 자동 접수 메시지",
         "Admin 대시보드",
         "구글시트 자동 연동",
       ],
-      priceText: "월 9,900원부터",
-      cta: { text: "무료 체험 시작하기", href: "#subscription-detail" },
+      priceText: "월 ₩9,900~",
+      cta: { text: "묻는 체험하기", href: "#subscription-detail" },
     },
   ],
   helpText:
-    "어떤 상품이 맞는지 고민된다면 템플릿으로 먼저 시작하세요. 필요할 때 구독으로 전환할 수 있습니다.",
+    "잘 모르겠다면 템플릿부터 시작하세요. 나중에 구독으로 전환할 수 있습니다.",
 };
 
 // -----------------------------------------------------------------------------
@@ -164,21 +165,21 @@ export interface TemplateDetailContent {
 }
 
 export const templateDetailContent: TemplateDetailContent = {
-  title: "비용 부담 줄이고, 템플릿으로 빠르게 시작",
-  subtitle: "가입상품 영업에 맞춘 템플릿을 빠르게 적용하세요",
+  title: "외주 80만원짜리를 15만원에",
+  subtitle: "가입상품 영업에 맞춘 템플릿으로 전문적인 상담 채널을 만드세요",
   templates: [
     {
       id: 1,
       name: "인터넷/TV 가입 신청",
       icon: "🌐",
-      description: "통신사별 요금제 선택과 설치 정보 접수에 최적화된 폼",
+      description: "단독/결합 선택, 요금제 비교, 설치 정보 접수에 최적화된 폼",
       mockupImage: "/images/landing/templates/template-internet.png",
     },
     {
       id: 2,
       name: "정수기/렌탈 상담 신청",
       icon: "💧",
-      description: "제품 옵션, 설치 희망일, 상담 시간을 한 번에 받는 폼",
+      description: "제품 옵션, 사은품 선택, 설치 희망일, 상담 시간을 한 번에 받는 폼",
       mockupImage: "/images/landing/templates/template-rental.png",
     },
     {
@@ -199,22 +200,22 @@ export const templateDetailContent: TemplateDetailContent = {
   pricing: [
     {
       item: "기본 템플릿",
-      price: "₩50,000 ~ ₩100,000",
+      price: "₩150,000",
       description: "원페이지 완성본 + 호스팅 + 1회 수정 포함",
     },
     {
-      item: "+ 구글시트 연동",
-      price: "₩10,000 ~ ₩20,000",
-      description: "폼 응답을 스프레드시트로 자동 저장",
+      item: "+ 추가 수정",
+      price: "₩30,000~ /회",
+      description: "상품/문구 변경 시 수정 비용",
     },
     {
-      item: "+ 이미지 커스텀",
-      price: "₩20,000 ~ ₩30,000",
-      description: "로고, 색상, 문구를 업종에 맞게 커스텀",
+      item: "+ 구글시트 연동",
+      price: "₩50,000",
+      description: "폼 응답을 스프레드시트로 자동 저장",
     },
   ],
   deliveryInfo:
-    "주문 후 1~2일 내 완성본 전달. 링크 하나로 바로 상담을 시작할 수 있습니다.",
+    "주문 후 1~2일 내 완성본 전달. 링크 하나로 블로그, SNS, 광고에 바로 연결됩니다.",
 };
 
 // -----------------------------------------------------------------------------
@@ -313,15 +314,15 @@ export interface PricingContent {
 }
 
 export const pricingContent: PricingContent = {
-  title: "부담 없이 시작하는 요금제",
+  title: "투명한 가격으로 시작하세요",
   subtitle: "필요한 방식으로 선택해 운영하세요",
   templatePricing: {
     title: "템플릿 (1회 구매)",
     description: "단건 제작이 필요한 분에게 추천",
     items: [
-      { item: "기본 템플릿", price: "₩50,000 ~ ₩100,000" },
-      { item: "+ 구글시트 연동", price: "₩10,000 ~ ₩20,000" },
-      { item: "+ 이미지 커스텀", price: "₩20,000 ~ ₩30,000" },
+      { item: "기본 템플릿", price: "₩150,000" },
+      { item: "+ 추가 수정", price: "₩30,000~ /회" },
+      { item: "+ 구글시트 연동", price: "₩50,000" },
     ],
   },
   subscriptionPricing: {
@@ -634,12 +635,12 @@ export interface FinalCTAContent {
 }
 
 export const finalCTAContent: FinalCTAContent = {
-  headline: "새로운 판매 채널을 열어요",
-  subheadline: "채널이 늘어날수록, 고객을 만날 기회도 늘어납니다.",
+  headline: "다음 고객을 놓치기 전에",
+  subheadline: "템플릿 하나면 내일부터 영업이 달라집니다",
 
   cta: {
-    primary: { text: "템플릿 바로 시작하기 →", href: "#" },
-    secondary: { text: "구독 무료 체험하기 →", href: "#" },
+    primary: { text: "템플릿 주문하기 →", href: "#" },
+    secondary: { text: "구독 묻는 체험 →", href: "#" },
   },
   trustSignals: ["1~2일 내 완성", "카드 등록 불필요", "100% 환불 보장"],
 };
