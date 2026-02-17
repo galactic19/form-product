@@ -36,7 +36,7 @@ export function SectionHeader({
 
       {subtitle && (
         <RevealOnScroll delay={0.1}>
-          <p className="mt-4 text-lg text-foreground-muted sm:text-xl">{subtitle}</p>
+          <p className="mt-4 text-lg text-muted-foreground sm:text-xl">{subtitle}</p>
         </RevealOnScroll>
       )}
     </div>
