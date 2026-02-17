@@ -36,8 +36,8 @@ export function Header() {
         scrolled && "bg-background/80 shadow-lg border-border"
       )}>
         {/* Logo */}
-        <Link 
-          href="/" 
+        <Link
+          href="/"
           className="text-xl font-bold text-foreground hover:text-primary transition-colors cursor-pointer"
         >
           양지바른웹

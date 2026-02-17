@@ -10,7 +10,7 @@ const icons = [Zap, BarChart3, RefreshCw]
 
 export function SubscriptionDetailSection() {
   return (
-    <section id="subscription-detail" className="relative border-t border-border/50 bg-background px-6 py-24 sm:py-32">
+    <section id="subscription-detail" className="relative overflow-hidden border-t border-border/50 bg-background px-4 py-24 sm:px-6 sm:py-32">
        {/* Background Elements */}
        <div className="absolute right-0 top-0 -z-10 h-[600px] w-[600px] bg-[radial-gradient(circle_at_100%_0%,rgba(255,255,255,0.03),transparent)]" />
        
@@ -59,4 +59,3 @@ export function SubscriptionDetailSection() {
     </section>
   )
 }
-

@@ -7,7 +7,7 @@ import { finalCTAContent } from '@/lib/content'
 
 export function FinalCTASection() {
   return (
-    <section id="final-cta" className="relative border-t border-border/50 bg-background px-6 py-32 sm:py-48">
+    <section id="final-cta" className="relative overflow-hidden border-t border-border/50 bg-background px-4 py-24 sm:px-6 sm:py-48">
       {/* Background Ambience */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/10 blur-[120px]" />
@@ -32,7 +32,7 @@ export function FinalCTASection() {
           <div className="mt-12 flex flex-col items-center justify-center gap-6 sm:flex-row">
             <MagneticButton
               href={finalCTAContent.cta.primary.href}
-              className="group relative min-w-[240px] overflow-hidden rounded-full bg-primary px-8 py-4 text-lg font-bold text-primary-foreground transition-all hover:shadow-[0_0_40px_rgba(255,36,119,0.5)]"
+              className="group relative w-full overflow-hidden rounded-full bg-primary px-8 py-4 text-lg font-bold text-primary-foreground transition-all hover:shadow-[0_0_40px_rgba(255,36,119,0.5)] sm:min-w-[240px] sm:w-auto"
             >
               <span className="relative z-10">{finalCTAContent.cta.primary.text}</span>
               <div className="absolute inset-0 -translate-x-full bg-white opacity-20 transition-transform group-hover:translate-x-0" />
@@ -40,7 +40,7 @@ export function FinalCTASection() {
             
             <MagneticButton
               href={finalCTAContent.cta.secondary.href}
-              className="min-w-[240px] rounded-full border border-border/50 bg-card/50 px-8 py-4 text-lg font-bold text-foreground backdrop-blur-sm transition-all hover:bg-card/80 hover:border-border"
+              className="w-full rounded-full border border-border/50 bg-card/50 px-8 py-4 text-lg font-bold text-foreground backdrop-blur-sm transition-all hover:bg-card/80 hover:border-border sm:min-w-[240px] sm:w-auto"
             >
               {finalCTAContent.cta.secondary.text}
             </MagneticButton>
@@ -61,4 +61,3 @@ export function FinalCTASection() {
     </section>
   )
 }
-

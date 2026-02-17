@@ -3,7 +3,7 @@ import { HeroSection } from '@/components/sections/HeroSection'
 
 function SectionLoadingFallback() {
   return (
-    <section className="border-t border-border px-6 py-24 sm:py-32" aria-hidden="true">
+    <section className="border-t border-border px-4 py-24 sm:px-6 sm:py-32" aria-hidden="true">
       <div className="mx-auto max-w-7xl space-y-4">
         <div className="h-4 w-36 animate-pulse bg-muted rounded" />
         <div className="h-10 w-full max-w-3xl animate-pulse bg-muted rounded" />
@@ -84,7 +84,7 @@ const FinalCTASection = dynamic(() =>
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen overflow-x-hidden bg-background text-foreground">
       <HeroSection />
       <ProblemSection />
       <TemplateDetailSection />
