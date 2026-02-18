@@ -394,11 +394,11 @@ export default function Home() {
       </div>
 
       {/* ═══ 모바일 하단 액션바 ══════════════════════════════════════ */}
-      <div
-        className="fixed inset-x-0 bottom-0 z-50 md:hidden"
-        style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
-      >
-        <div className="border-t border-white/[0.06] bg-[#0A0A0A]/95 px-4 pb-3 pt-3 backdrop-blur-2xl">
+      <div className="fixed inset-x-0 bottom-0 z-50 md:hidden">
+        <div
+          className="border-t border-white/[0.06] bg-[#0A0A0A]/95 px-4 pt-3 backdrop-blur-2xl"
+          style={{ paddingBottom: 'max(0.75rem, env(safe-area-inset-bottom))' }}
+        >
           <div className="grid grid-cols-[1fr_1fr_2fr] gap-2">
 
             {/* 전화 상담 */}
