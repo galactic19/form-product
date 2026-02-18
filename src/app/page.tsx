@@ -262,7 +262,7 @@ export default function Home() {
 
   return (
     <div
-      className="overflow-x-hidden bg-white pb-[68px] text-[#111] md:pb-0"
+      className="overflow-x-hidden bg-white pb-24 text-[#111] md:pb-0"
       style={{ fontFamily: 'var(--font-noto-sans-kr), system-ui, sans-serif' }}
     >
       {/* ═══ 네비게이션 ═══════════════════════════════════════════════════ */}
@@ -393,44 +393,50 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ═══ 모바일 하단 고정 액션바 ══════════════════════════════════ */}
+      {/* ═══ 모바일 하단 액션바 ══════════════════════════════════════ */}
       <div
         className="fixed inset-x-0 bottom-0 z-50 md:hidden"
         style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
       >
-        <div className="flex items-stretch border-t border-[#111]/10 bg-white shadow-[0_-4px_24px_rgba(0,0,0,0.08)]">
-          {/* 전화 */}
-          <a
-            href="tel:0000000000"
-            className="flex flex-1 flex-col items-center justify-center gap-1 py-3.5 text-[#555] transition-colors active:bg-[#F6F5F1]"
-          >
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-label="전화 상담">
-              <path d="M3 3.5A1.5 1.5 0 014.5 2h.75a1.5 1.5 0 011.4.966l.795 1.985a1.5 1.5 0 01-.346 1.628l-1.07 1.07a10.017 10.017 0 004.322 4.323l1.07-1.07a1.5 1.5 0 011.628-.347l1.985.795A1.5 1.5 0 0116 12.75v.75A1.5 1.5 0 0114.5 15C8.149 15 3 9.851 3 3.5z" stroke="#555" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            <span className="text-[10px] font-bold">전화 상담</span>
-          </a>
+        <div className="border-t border-white/[0.06] bg-[#0A0A0A]/95 px-4 pb-3 pt-3 backdrop-blur-2xl">
+          <div className="grid grid-cols-[1fr_1fr_2fr] gap-2">
 
-          {/* 카카오 */}
-          <a
-            href="https://open.kakao.com"
-            className="flex flex-1 flex-col items-center justify-center gap-1 bg-[#FEE500] py-3.5 transition-opacity active:opacity-85"
-          >
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-label="카카오 상담">
-              <path d="M10 3C6.134 3 3 5.463 3 8.5c0 1.975 1.243 3.706 3.13 4.718L5.25 16l3.11-2.04A8.74 8.74 0 0010 14c3.866 0 7-2.462 7-5.5S13.866 3 10 3z" fill="#111" />
-            </svg>
-            <span className="text-[10px] font-bold text-[#111]">카카오 상담</span>
-          </a>
+            {/* 전화 상담 */}
+            <a
+              href="tel:0000000000"
+              className="flex flex-col items-center justify-center gap-1 rounded-2xl border border-white/10 py-3 text-white transition-all active:scale-[0.96] active:bg-white/5"
+              aria-label="전화 상담"
+            >
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                <path d="M2.5 3A1.5 1.5 0 014 1.5h.6a1.5 1.5 0 011.4.963l.67 1.674a1.5 1.5 0 01-.34 1.658L5.28 6.84a8.12 8.12 0 004.88 4.88l1.045-1.05a1.5 1.5 0 011.658-.34l1.674.67A1.5 1.5 0 0116.5 12.4V13a1.5 1.5 0 01-1.5 1.5C8.044 14.5 1.5 7.956 1.5 1.5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              <span className="text-[10px] font-bold tracking-wide text-white/70">전화상담</span>
+            </a>
 
-          {/* 무료 상담 */}
-          <a
-            href="#contact"
-            className="flex flex-1 flex-col items-center justify-center gap-1 bg-[#E8522A] py-3.5 transition-opacity active:opacity-85"
-          >
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-label="무료 상담">
-              <path d="M3 5a2 2 0 012-2h10a2 2 0 012 2v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5zm2 0v7h10V5H5zm2 2h6M7 9h4" stroke="white" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            <span className="text-[10px] font-bold text-white">무료 상담</span>
-          </a>
+            {/* 카카오 상담 */}
+            <a
+              href="https://open.kakao.com"
+              className="flex flex-col items-center justify-center gap-1 rounded-2xl border border-[#FEE500]/20 bg-[#FEE500]/5 py-3 text-[#FEE500] transition-all active:scale-[0.96] active:bg-[#FEE500]/10"
+              aria-label="카카오 상담"
+            >
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                <path d="M9 2C5.134 2 2 4.477 2 7.5c0 1.9 1.072 3.576 2.715 4.61L3.75 15l3.023-1.98A8.3 8.3 0 009 13c3.866 0 7-2.477 7-5.5S12.866 2 9 2z" fill="currentColor" />
+              </svg>
+              <span className="text-[10px] font-bold tracking-wide text-[#FEE500]/80">카카오</span>
+            </a>
+
+            {/* 무료 상담 CTA */}
+            <a
+              href="#contact"
+              className="flex items-center justify-center gap-2 rounded-2xl bg-[#E8522A] text-[13px] font-black text-white shadow-[0_4px_20px_rgba(232,82,42,0.4)] transition-all active:scale-[0.96] active:bg-[#D44820]"
+            >
+              무료 상담하기
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+                <path d="M2 6.5h9M7 2.5l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </a>
+
+          </div>
         </div>
       </div>
 
