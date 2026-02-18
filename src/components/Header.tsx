@@ -3,15 +3,11 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
-import { ThemeToggle } from './ThemeToggle'
-import { cn } from '@/lib/utils'
 
 const navigation = [
-  { name: '홈', href: '/' },
-  { name: '솔루션', href: '#solution' },
-  { name: '가격', href: '#pricing' },
-  { name: '후기', href: '#testimonials' },
-  { name: 'FAQ', href: '#faq' },
+  { name: 'Problem', href: '#problem' },
+  { name: 'Solution', href: '#solution' },
+  { name: 'Pricing', href: '#pricing' },
 ]
 
 export function Header() {
@@ -20,90 +16,77 @@ export function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
+      setScrolled(window.scrollY > 50)
     }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   return (
-    <header className={cn(
-      "fixed top-6 left-0 right-0 z-50 mx-auto max-w-7xl px-6 transition-all duration-300",
-      scrolled ? "top-4" : "top-6"
-    )}>
-      <nav className={cn(
-        "flex items-center justify-between rounded-full border border-border bg-white/5 px-6 py-3 backdrop-blur-md transition-all duration-300",
-        scrolled && "bg-background/80 shadow-lg border-border"
-      )}>
-        {/* Logo */}
-        <Link
-          href="/"
-          className="text-xl font-bold text-foreground hover:text-primary transition-colors cursor-pointer"
-        >
-          양지바른웹
-        </Link>
+    <header 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled ? 'bg-white/90 backdrop-blur-md border-b border-[#e9e9e9]' : 'bg-transparent'
+      }`}
+    >
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo */}
+          <Link href="/" className="text-xl font-bold tracking-tight hover:text-[#ff4d4d] transition-colors">
+            양지바른웹
+          </Link>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
-          {navigation.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors cursor-pointer"
-            >
-              {item.name}
-            </Link>
-          ))}
-          <div className="flex items-center gap-4 ml-2">
-            <ThemeToggle />
-            <Link
-              href="#pricing"
-              className="rounded-full bg-primary px-5 py-2 text-sm font-bold text-white transition-all hover:bg-primary/90 hover:scale-105"
-            >
-              시작하기
-            </Link>
-          </div>
-        </div>
-
-        {/* Mobile: Theme Toggle + Menu Button */}
-        <div className="md:hidden flex items-center gap-3">
-          <ThemeToggle />
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 text-foreground hover:text-primary transition-colors cursor-pointer"
-            aria-label="메뉴 열기/닫기"
-          >
-            {mobileMenuOpen ? (
-              <X className="h-6 w-6" />
-            ) : (
-              <Menu className="h-6 w-6" />
-            )}
-          </button>
-        </div>
-      </nav>
-
-      {/* Mobile Navigation */}
-      {mobileMenuOpen && (
-        <div className="absolute top-full left-6 right-6 mt-2 rounded-2xl border border-border bg-background/95 backdrop-blur-xl p-4 md:hidden animate-fade-in shadow-2xl">
-          <div className="flex flex-col space-y-2">
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-8">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="block rounded-lg px-4 py-3 text-base font-medium text-foreground/80 hover:bg-muted hover:text-foreground transition-colors"
+                className="text-sm hover:text-[#ff4d4d] transition-colors"
               >
                 {item.name}
               </Link>
             ))}
             <Link
-              href="#pricing"
-              onClick={() => setMobileMenuOpen(false)}
-              className="mt-2 block w-full rounded-xl bg-primary px-4 py-3 text-center font-bold text-white hover:bg-primary/90 transition-colors"
+              href="#contact"
+              className="px-5 py-2.5 bg-black text-white text-sm font-medium hover:bg-[#ff4d4d] transition-colors"
             >
               시작하기
             </Link>
-          </div>
+          </nav>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-2 hover:text-[#ff4d4d] transition-colors"
+            aria-label="메뉴 열기/닫기"
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Navigation */}
+      {mobileMenuOpen && (
+        <div className="md:hidden absolute top-full left-0 right-0 bg-white border-b border-[#e9e9e9] shadow-lg">
+          <nav className="flex flex-col p-6 space-y-4">
+            {navigation.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-lg font-medium hover:text-[#ff4d4d] transition-colors"
+              >
+                {item.name}
+              </Link>
+            ))}
+            <Link
+              href="#contact"
+              onClick={() => setMobileMenuOpen(false)}
+              className="mt-4 block w-full text-center px-6 py-3 bg-black text-white font-medium hover:bg-[#ff4d4d] transition-colors"
+            >
+              시작하기
+            </Link>
+          </nav>
         </div>
       )}
     </header>
