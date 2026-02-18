@@ -549,7 +549,42 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ═══ ③ 대상 체크리스트 ════════════════════════════════════════ */}
+      {/* ═══ ③ 페인 포인트 ═════════════════════════════════════════════ */}
+      <section className="bg-[#F6F5F1] px-5 py-20 md:px-10 md:py-28">
+        <div className="mx-auto max-w-[1400px]">
+          <div className="js-reveal mb-12 md:mb-16">
+            <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.22em] text-[#BBB]">
+              WHY 양지바른웹
+            </p>
+            <h2 className="text-[clamp(2rem,5vw,3.6rem)] font-black leading-[1.1] tracking-[-0.04em]">
+              이런 고민,
+              <br />
+              있으시죠?
+            </h2>
+          </div>
+
+          <div className="js-stagger grid gap-4 md:grid-cols-3">
+            {PAINS.map((pain) => (
+              <article
+                key={pain.no}
+                className="js-card group rounded-2xl bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_48px_rgba(0,0,0,0.09)]"
+              >
+                <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#DDD]">
+                  {pain.no}
+                </span>
+                <h3 className="mt-4 whitespace-pre-line text-[clamp(1.05rem,2.2vw,1.25rem)] font-black leading-[1.4] tracking-[-0.02em]">
+                  {pain.title}
+                </h3>
+                <p className="mt-4 border-t border-[#F0F0F0] pt-4 text-[13px] leading-[1.75] text-[#888]">
+                  {pain.desc}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ ④ 대상 체크리스트 ════════════════════════════════════════ */}
       <section className="px-5 py-16 md:px-10 md:py-20">
         <div className="mx-auto max-w-[1400px]">
           <div className="js-reveal flex flex-col gap-10 md:flex-row md:items-center md:justify-between md:gap-16">
@@ -609,7 +644,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ ④ 통계 ═══════════════════════════════════════════════════ */}
+      {/* ═══ ⑤ 통계 ═══════════════════════════════════════════════════ */}
       <section className="px-5 py-20 md:px-10 md:py-28">
         <div className="mx-auto max-w-[1400px]">
           <div className="js-stagger grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-4">
@@ -630,42 +665,224 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ ④ 페인 포인트 ═════════════════════════════════════════════ */}
-      <section className="bg-[#F6F5F1] px-5 py-20 md:px-10 md:py-28">
+      {/* ═══ ⑥ 업종 ═══════════════════════════════════════════════════ */}
+      <section
+        id="industries"
+        className="bg-[#0A0A0A] px-5 py-20 text-white md:px-10 md:py-28"
+      >
         <div className="mx-auto max-w-[1400px]">
-          <div className="js-reveal mb-12 md:mb-16">
-            <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.22em] text-[#BBB]">
-              WHY 양지바른웹
-            </p>
-            <h2 className="text-[clamp(2rem,5vw,3.6rem)] font-black leading-[1.1] tracking-[-0.04em]">
-              이런 고민,
+          <div className="js-reveal mb-12 flex flex-col justify-between gap-6 md:mb-16 md:flex-row md:items-end">
+            <div>
+              <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.22em] text-white/30">
+                INDUSTRIES
+              </p>
+              <h2 className="text-[clamp(2rem,5vw,3.6rem)] font-black leading-[1.1] tracking-[-0.04em]">
+                6개 업종
+                <br />
+                특화 템플릿
+              </h2>
+            </div>
+            <p className="max-w-[320px] text-[14px] leading-[1.85] text-white/45">
+              각 업종의 구매 패턴과 고객 심리에 맞춰
               <br />
-              있으시죠?
-            </h2>
+              다르게 설계한 전환 최적화 랜딩입니다.
+            </p>
           </div>
 
-          <div className="js-stagger grid gap-4 md:grid-cols-3">
-            {PAINS.map((pain) => (
-              <article
-                key={pain.no}
-                className="js-card group rounded-2xl bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_48px_rgba(0,0,0,0.09)]"
+          <div className="js-stagger grid gap-px bg-white/8 md:grid-cols-2 lg:grid-cols-3">
+            {INDUSTRIES.map((ind, i) => (
+              <Link
+                key={ind.label}
+                href={ind.href}
+                className="js-card group flex flex-col gap-5 bg-[#0A0A0A] p-7 transition-colors duration-200 hover:bg-[#141414]"
               >
-                <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#DDD]">
-                  {pain.no}
-                </span>
-                <h3 className="mt-4 whitespace-pre-line text-[clamp(1.05rem,2.2vw,1.25rem)] font-black leading-[1.4] tracking-[-0.02em]">
-                  {pain.title}
-                </h3>
-                <p className="mt-4 border-t border-[#F0F0F0] pt-4 text-[13px] leading-[1.75] text-[#888]">
-                  {pain.desc}
-                </p>
-              </article>
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-white/20">
+                    0{i + 1}
+                  </span>
+                  <span className="rounded-full border border-white/8 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.15em] text-white/30">
+                    {ind.en}
+                  </span>
+                </div>
+
+                <div>
+                  <div className="mb-3 flex items-center gap-3">
+                    <span
+                      className="h-2 w-2 rounded-full"
+                      style={{ backgroundColor: ind.color }}
+                      aria-hidden="true"
+                    />
+                    <h3 className="text-[clamp(1.6rem,3vw,2.2rem)] font-black tracking-[-0.04em] text-white">
+                      {ind.label}
+                    </h3>
+                  </div>
+                  <p className="text-[13px] leading-[1.75] text-white/45">
+                    {ind.desc}
+                  </p>
+                </div>
+
+                <div className="mt-auto">
+                  <span className="inline-flex items-center gap-1.5 text-[12px] font-bold text-[#E8522A] opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                    템플릿 보기
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 14 14"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M2 7h10M8 3l4 4-4 4"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </span>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ═══ ⑤ 상품 소개 ══════════════════════════════════════════════ */}
+      {/* ═══ ⑦ 제작 과정 ═══════════════════════════════════════════════ */}
+      <section id="제작과정" className="px-5 py-20 md:px-10 md:py-28">
+        <div className="mx-auto max-w-[1400px]">
+          <div className="js-reveal mb-12 md:mb-16">
+            <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.22em] text-[#BBB]">
+              PROCESS
+            </p>
+            <h2 className="text-[clamp(2rem,5vw,3.6rem)] font-black leading-[1.1] tracking-[-0.04em]">
+              3단계로
+              <br />
+              완성됩니다
+            </h2>
+          </div>
+
+          <div className="js-stagger grid gap-8 md:grid-cols-3 md:gap-12">
+            {STEPS.map((step, i) => (
+              <div key={step.no} className="js-card relative">
+                {/* 연결선 (데스크탑만) */}
+                {i < STEPS.length - 1 && (
+                  <div
+                    className="absolute left-[calc(40px+1.5rem)] right-[-1.5rem] top-5 hidden h-px bg-[#E8E8E8] md:block"
+                    aria-hidden="true"
+                  />
+                )}
+
+                <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-full bg-[#E8522A] text-[12px] font-black text-white">
+                  {step.no}
+                </div>
+                <h3 className="mb-2 text-xl font-black tracking-[-0.03em]">
+                  {step.title}
+                </h3>
+                <p className="text-[14px] leading-[1.8] text-[#888]">
+                  {step.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* 보조 텍스트 */}
+          <div className="js-reveal mt-16 rounded-2xl bg-[#F6F5F1] p-7 md:mt-20">
+            <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+              <div>
+                <p className="font-black tracking-[-0.02em] text-[#111]">
+                  복잡한 과정 없이 빠르게 시작하세요
+                </p>
+                <p className="mt-1 text-[13px] text-[#888]">
+                  상담부터 납품까지 평균 3일, 빠르면 당일 운영 가능합니다.
+                </p>
+              </div>
+              <a
+                href="#contact"
+                className="inline-flex h-[44px] shrink-0 items-center rounded-full bg-[#111] px-6 text-[13px] font-bold text-white transition-all hover:bg-[#333]"
+              >
+                지금 문의하기
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ ⑧ 템플릿 쇼케이스 ══════════════════════════════════════════ */}
+      <section id="템플릿" className="bg-[#F6F5F1] px-5 py-20 md:px-10 md:py-28">
+        <div className="mx-auto max-w-[1400px]">
+          <div className="js-reveal mb-12 flex flex-col justify-between gap-5 md:mb-16 md:flex-row md:items-end">
+            <div>
+              <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.22em] text-[#BBB]">
+                TEMPLATES
+              </p>
+              <h2 className="text-[clamp(2rem,5vw,3.6rem)] font-black leading-[1.1] tracking-[-0.04em]">
+                실제 사용 중인
+                <br />
+                템플릿 예시
+              </h2>
+            </div>
+            <div className="flex flex-col items-start gap-3 md:items-end">
+              <p className="max-w-[300px] text-[14px] leading-[1.8] text-[#888]">
+                이미지 교체만으로 바로 운영 가능한
+                <br />
+                완성형 구조로 납품됩니다.
+              </p>
+              <Link
+                href="/templates"
+                className="inline-flex h-[40px] items-center rounded-full bg-[#111] px-5 text-[12px] font-bold text-white transition-all hover:bg-[#333]"
+              >
+                전체 템플릿 보기 →
+              </Link>
+            </div>
+          </div>
+
+          <div className="js-stagger grid gap-5 md:grid-cols-3">
+            {[
+              { title: '인터넷 가입 신청', sub: '통신사별 비교 + 즉시 신청', bg: '#D9D7CF' },
+              { title: 'TV 수신 설치', sub: '채널 구성 시각화 + 신청', bg: '#C9C7BF', offset: true },
+              { title: '렌탈 상품 신청', sub: '월 비용 강조 + 방문 예약', bg: '#D4D2CA' },
+            ].map(({ title, sub, bg, offset }) => (
+              <div
+                key={title}
+                className={`js-card overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_56px_rgba(0,0,0,0.12)] ${offset ? 'md:translate-y-6' : ''}`}
+              >
+                {/* 목업 프리뷰 */}
+                <div
+                  className="relative flex h-[260px] flex-col justify-between p-5 md:h-[340px]"
+                  style={{ backgroundColor: bg }}
+                >
+                  {/* 모바일 프레임 목업 */}
+                  <div className="flex items-center gap-1.5 opacity-40">
+                    <div className="h-1.5 w-1.5 rounded-full bg-[#111]" />
+                    <div className="h-px flex-1 bg-[#111]" />
+                  </div>
+
+                  <div className="space-y-3">
+                    <div className="h-28 rounded-xl bg-white/50" />
+                    <div className="space-y-2">
+                      <div className="h-3 w-4/5 rounded-full bg-[#111]/15" />
+                      <div className="h-3 w-3/5 rounded-full bg-[#111]/10" />
+                    </div>
+                    <div className="h-10 rounded-lg bg-[#E8522A]/80" />
+                  </div>
+
+                  <div className="absolute right-4 top-4 rounded-full bg-[#E8522A] px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.15em] text-white">
+                    LIVE
+                  </div>
+                </div>
+
+                {/* 카드 텍스트 */}
+                <div className="bg-white px-5 py-4">
+                  <p className="font-black tracking-[-0.02em]">{title}</p>
+                  <p className="mt-0.5 text-[12px] text-[#888]">{sub}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ ⑨ 상품 소개 ══════════════════════════════════════════════ */}
       <section className="px-5 py-16 md:px-10 md:py-20">
         <div className="mx-auto max-w-[1400px]">
           <div className="js-reveal mb-10 md:mb-14">
@@ -769,224 +986,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ ⑥ 업종 ═══════════════════════════════════════════════════ */}
-      <section
-        id="industries"
-        className="bg-[#0A0A0A] px-5 py-20 text-white md:px-10 md:py-28"
-      >
-        <div className="mx-auto max-w-[1400px]">
-          <div className="js-reveal mb-12 flex flex-col justify-between gap-6 md:mb-16 md:flex-row md:items-end">
-            <div>
-              <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.22em] text-white/30">
-                INDUSTRIES
-              </p>
-              <h2 className="text-[clamp(2rem,5vw,3.6rem)] font-black leading-[1.1] tracking-[-0.04em]">
-                6개 업종
-                <br />
-                특화 템플릿
-              </h2>
-            </div>
-            <p className="max-w-[320px] text-[14px] leading-[1.85] text-white/45">
-              각 업종의 구매 패턴과 고객 심리에 맞춰
-              <br />
-              다르게 설계한 전환 최적화 랜딩입니다.
-            </p>
-          </div>
-
-          <div className="js-stagger grid gap-px bg-white/8 md:grid-cols-2 lg:grid-cols-3">
-            {INDUSTRIES.map((ind, i) => (
-              <Link
-                key={ind.label}
-                href={ind.href}
-                className="js-card group flex flex-col gap-5 bg-[#0A0A0A] p-7 transition-colors duration-200 hover:bg-[#141414]"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-white/20">
-                    0{i + 1}
-                  </span>
-                  <span className="rounded-full border border-white/8 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.15em] text-white/30">
-                    {ind.en}
-                  </span>
-                </div>
-
-                <div>
-                  <div className="mb-3 flex items-center gap-3">
-                    <span
-                      className="h-2 w-2 rounded-full"
-                      style={{ backgroundColor: ind.color }}
-                      aria-hidden="true"
-                    />
-                    <h3 className="text-[clamp(1.6rem,3vw,2.2rem)] font-black tracking-[-0.04em] text-white">
-                      {ind.label}
-                    </h3>
-                  </div>
-                  <p className="text-[13px] leading-[1.75] text-white/45">
-                    {ind.desc}
-                  </p>
-                </div>
-
-                <div className="mt-auto">
-                  <span className="inline-flex items-center gap-1.5 text-[12px] font-bold text-[#E8522A] opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-                    템플릿 보기
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 14 14"
-                      fill="none"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M2 7h10M8 3l4 4-4 4"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ ⑥ 제작 과정 ═══════════════════════════════════════════════ */}
-      <section id="제작과정" className="px-5 py-20 md:px-10 md:py-28">
-        <div className="mx-auto max-w-[1400px]">
-          <div className="js-reveal mb-12 md:mb-16">
-            <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.22em] text-[#BBB]">
-              PROCESS
-            </p>
-            <h2 className="text-[clamp(2rem,5vw,3.6rem)] font-black leading-[1.1] tracking-[-0.04em]">
-              3단계로
-              <br />
-              완성됩니다
-            </h2>
-          </div>
-
-          <div className="js-stagger grid gap-8 md:grid-cols-3 md:gap-12">
-            {STEPS.map((step, i) => (
-              <div key={step.no} className="js-card relative">
-                {/* 연결선 (데스크탑만) */}
-                {i < STEPS.length - 1 && (
-                  <div
-                    className="absolute left-[calc(40px+1.5rem)] right-[-1.5rem] top-5 hidden h-px bg-[#E8E8E8] md:block"
-                    aria-hidden="true"
-                  />
-                )}
-
-                <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-full bg-[#E8522A] text-[12px] font-black text-white">
-                  {step.no}
-                </div>
-                <h3 className="mb-2 text-xl font-black tracking-[-0.03em]">
-                  {step.title}
-                </h3>
-                <p className="text-[14px] leading-[1.8] text-[#888]">
-                  {step.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          {/* 보조 텍스트 */}
-          <div className="js-reveal mt-16 rounded-2xl bg-[#F6F5F1] p-7 md:mt-20">
-            <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-              <div>
-                <p className="font-black tracking-[-0.02em] text-[#111]">
-                  복잡한 과정 없이 빠르게 시작하세요
-                </p>
-                <p className="mt-1 text-[13px] text-[#888]">
-                  상담부터 납품까지 평균 3일, 빠르면 당일 운영 가능합니다.
-                </p>
-              </div>
-              <a
-                href="#contact"
-                className="inline-flex h-[44px] shrink-0 items-center rounded-full bg-[#111] px-6 text-[13px] font-bold text-white transition-all hover:bg-[#333]"
-              >
-                지금 문의하기
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ ⑦ 템플릿 쇼케이스 ══════════════════════════════════════════ */}
-      <section id="템플릿" className="bg-[#F6F5F1] px-5 py-20 md:px-10 md:py-28">
-        <div className="mx-auto max-w-[1400px]">
-          <div className="js-reveal mb-12 flex flex-col justify-between gap-5 md:mb-16 md:flex-row md:items-end">
-            <div>
-              <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.22em] text-[#BBB]">
-                TEMPLATES
-              </p>
-              <h2 className="text-[clamp(2rem,5vw,3.6rem)] font-black leading-[1.1] tracking-[-0.04em]">
-                실제 사용 중인
-                <br />
-                템플릿 예시
-              </h2>
-            </div>
-            <div className="flex flex-col items-start gap-3 md:items-end">
-              <p className="max-w-[300px] text-[14px] leading-[1.8] text-[#888]">
-                이미지 교체만으로 바로 운영 가능한
-                <br />
-                완성형 구조로 납품됩니다.
-              </p>
-              <Link
-                href="/templates"
-                className="inline-flex h-[40px] items-center rounded-full bg-[#111] px-5 text-[12px] font-bold text-white transition-all hover:bg-[#333]"
-              >
-                전체 템플릿 보기 →
-              </Link>
-            </div>
-          </div>
-
-          <div className="js-stagger grid gap-5 md:grid-cols-3">
-            {[
-              { title: '인터넷 가입 신청', sub: '통신사별 비교 + 즉시 신청', bg: '#D9D7CF' },
-              { title: 'TV 수신 설치', sub: '채널 구성 시각화 + 신청', bg: '#C9C7BF', offset: true },
-              { title: '렌탈 상품 신청', sub: '월 비용 강조 + 방문 예약', bg: '#D4D2CA' },
-            ].map(({ title, sub, bg, offset }) => (
-              <div
-                key={title}
-                className={`js-card overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_56px_rgba(0,0,0,0.12)] ${offset ? 'md:translate-y-6' : ''}`}
-              >
-                {/* 목업 프리뷰 */}
-                <div
-                  className="relative flex h-[260px] flex-col justify-between p-5 md:h-[340px]"
-                  style={{ backgroundColor: bg }}
-                >
-                  {/* 모바일 프레임 목업 */}
-                  <div className="flex items-center gap-1.5 opacity-40">
-                    <div className="h-1.5 w-1.5 rounded-full bg-[#111]" />
-                    <div className="h-px flex-1 bg-[#111]" />
-                  </div>
-
-                  <div className="space-y-3">
-                    <div className="h-28 rounded-xl bg-white/50" />
-                    <div className="space-y-2">
-                      <div className="h-3 w-4/5 rounded-full bg-[#111]/15" />
-                      <div className="h-3 w-3/5 rounded-full bg-[#111]/10" />
-                    </div>
-                    <div className="h-10 rounded-lg bg-[#E8522A]/80" />
-                  </div>
-
-                  <div className="absolute right-4 top-4 rounded-full bg-[#E8522A] px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.15em] text-white">
-                    LIVE
-                  </div>
-                </div>
-
-                {/* 카드 텍스트 */}
-                <div className="bg-white px-5 py-4">
-                  <p className="font-black tracking-[-0.02em]">{title}</p>
-                  <p className="mt-0.5 text-[12px] text-[#888]">{sub}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ ⑧ 문의 CTA ════════════════════════════════════════════════ */}
+      {/* ═══ ⑩ 문의 CTA ════════════════════════════════════════════════ */}
       <section id="contact" className="bg-[#E8522A] px-5 py-20 md:px-10 md:py-28">
         <div className="mx-auto max-w-[1400px]">
           <div className="js-reveal">
