@@ -1,149 +1,72 @@
 import Link from 'next/link'
-import { Github, Twitter, Linkedin, Mail } from 'lucide-react'
 
 const footerLinks = {
   product: [
-    { name: '기능', href: '#features' },
-    { name: '가격', href: '#pricing' },
-    { name: '템플릿', href: '#templates' },
-    { name: '구독', href: '#subscription' },
-  ],
-  company: [
-    { name: '소개', href: '#about' },
-    { name: '블로그', href: '#blog' },
-    { name: '채용', href: '#careers' },
-    { name: '연락처', href: '#contact' },
-  ],
-  support: [
+    { name: 'Templates', href: '#solution' },
+    { name: 'Pricing', href: '#pricing' },
     { name: 'FAQ', href: '#faq' },
-    { name: '문서', href: '#docs' },
-    { name: '커뮤니티', href: '#community' },
-    { name: '상태', href: '#status' },
   ],
-  legal: [
-    { name: '이용약관', href: '#terms' },
-    { name: '개인정보처리방침', href: '#privacy' },
-    { name: '쿠키 정책', href: '#cookies' },
+  contact: [
+    { name: 'contact@form.kr', href: 'mailto:contact@form.kr' },
   ],
 }
 
-const socialLinks = [
-  { name: 'GitHub', icon: Github, href: '#' },
-  { name: 'Twitter', icon: Twitter, href: '#' },
-  { name: 'LinkedIn', icon: Linkedin, href: '#' },
-  { name: 'Email', icon: Mail, href: 'mailto:contact@form.com' },
-]
-
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-background pt-16 pb-8">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Main Footer Content */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-16">
-          {/* Brand Column */}
-          <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="text-2xl font-bold text-foreground hover:text-primary transition-colors cursor-pointer">
+    <footer className="py-16 bg-black text-white">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-12">
+          {/* Brand */}
+          <div>
+            <Link href="/" className="text-2xl font-bold tracking-tight">
               양지바른웹
             </Link>
-            <p className="mt-4 text-sm text-muted-foreground">
-              폼 디자인을 단순하게, 강력하게.
-              <br />
-              Lovable Style Redesign.
+            <p className="mt-4 text-gray-400 text-sm max-w-xs leading-relaxed">
+              가입상품 영업자를 위한 전용 신청폼 서비스
             </p>
           </div>
 
-          {/* Product Links */}
-          <div>
-            <h3 className="text-sm font-bold text-foreground mb-4">제품</h3>
-            <ul className="space-y-3">
-              {footerLinks.product.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Links */}
+          <div className="flex gap-16">
+            <div>
+              <h3 className="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-4">Links</h3>
+              <ul className="space-y-3">
+                {footerLinks.product.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-gray-400 hover:text-white transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Company Links */}
-          <div>
-            <h3 className="text-sm font-bold text-foreground mb-4">회사</h3>
-            <ul className="space-y-3">
-              {footerLinks.company.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Support Links */}
-          <div>
-            <h3 className="text-sm font-bold text-foreground mb-4">지원</h3>
-            <ul className="space-y-3">
-              {footerLinks.support.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Legal Links */}
-          <div>
-            <h3 className="text-sm font-bold text-foreground mb-4">법률</h3>
-            <ul className="space-y-3">
-              {footerLinks.legal.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <div>
+              <h3 className="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-4">Contact</h3>
+              <ul className="space-y-3">
+                {footerLinks.contact.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-gray-400 hover:text-white transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
 
-        {/* Bottom Section */}
-        <div className="pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4">
-          {/* Copyright */}
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} 양지바른웹. All rights reserved.
+        {/* Bottom */}
+        <div className="pt-8 border-t border-gray-800 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-gray-600 text-sm">
+            © 2026 양지바른웹. All rights reserved.
           </p>
-
-          {/* Social Links */}
-          <div className="flex items-center gap-4">
-            {socialLinks.map((social) => {
-              const Icon = social.icon
-              return (
-                <Link
-                  key={social.name}
-                  href={social.href}
-                  className="p-2 rounded-full border border-border bg-muted/50 hover:bg-muted hover:border-primary transition-all cursor-pointer"
-                  aria-label={social.name}
-                >
-                  <Icon className="h-5 w-5 text-muted-foreground hover:text-primary transition-colors" />
-                </Link>
-              )
-            })}
-          </div>
         </div>
       </div>
     </footer>

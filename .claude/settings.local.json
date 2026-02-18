@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx next build:*)",
+      "Bash(npx tsc:*)",
+      "Bash(dir:*)",
+      "Bash(npm run build:*)",
+      "Bash(cmd /c \"npm run build 2>&1\")",
+      "Bash(powershell -Command \"Set-Location 'D:\\\\dev\\\\form-product'; npm run build:*)",
+      "Bash(powershell -Command \"Set-Location ''D:\\\\dev\\\\form-product''; npm run dev 2>&1 &\")",
+      "Bash(powershell -Command \"Start-Sleep -Seconds 5; Get-Content ''C:\\\\Users\\\\galac\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\D--dev-form-product\\\\tasks\\\\bcf6b5c.output''\")",
+      "Bash(Start-Process -FilePath \"cmd\" -ArgumentList \"/c npm run dev\" -WindowStyle Hidden)",
+      "Bash(powershell -Command \"Set-Location ''D:\\\\dev\\\\form-product''; Start-Process npm -ArgumentList ''run'', ''dev'' -RedirectStandardOutput ''C:\\\\Users\\\\galac\\\\AppData\\\\Local\\\\Temp\\\\devserver.log'' -RedirectStandardError ''C:\\\\Users\\\\galac\\\\AppData\\\\Local\\\\Temp\\\\devserver-err.log'' -NoNewWindow\")",
+      "Bash(powershell -Command \"Start-Sleep 8; Test-NetConnection -ComputerName localhost -Port 3000 | Select-Object TcpTestSucceeded\")",
+      "Bash(powershell -Command \"npx playwright --version 2>&1\")",
+      "Bash(powershell -Command \"npx playwright install chromium 2>&1 | Select-Object -Last 5\")",
+      "Bash(powershell -Command \"Set-Location ''D:\\\\dev\\\\form-product''; npm install @playwright/test --save-dev 2>&1 | Select-Object -Last 3\")",
+      "Bash(powershell -Command \"Set-Location ''D:\\\\dev\\\\form-product''; npx playwright install chromium 2>&1 | Select-Object -Last 5\")",
+      "Bash(powershell -Command \"Set-Location ''D:\\\\dev\\\\form-product''; node check-page.mjs 2>&1\")",
+      "Bash(powershell -Command \"Set-Location ''D:\\\\dev\\\\form-product''; node check-page2.mjs 2>&1\")",
+      "Bash(powershell -Command \"Set-Location ''D:\\\\dev\\\\form-product''; node check-final.mjs 2>&1\")",
+      "Bash(powershell -Command:*)",
+      "Bash(node:*)"
+    ]
+  }
+}
