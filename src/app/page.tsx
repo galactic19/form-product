@@ -6,6 +6,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { HeroCanvas } from '@/components/animations/HeroCanvas'
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection'
+import { MobileActionBar } from '@/components/sections/MobileActionBar'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -255,7 +256,7 @@ export default function Home() {
       gsap.utils
         .toArray<HTMLElement>('.js-stagger')
         .forEach((parent) => {
-          const kids = parent.querySelectorAll<HTMLElement>('.js-card')
+          const kids = parent.querySelectorAll<HTMLElement>('.js-card:not(.js-industry-card)')
           if (kids.length === 0) return
           gsap.to(kids, {
             opacity: 1,
@@ -271,6 +272,90 @@ export default function Home() {
             },
           })
         })
+
+      // ── 업종 카드: 데스크탑 스태거 / 모바일 개별 스크롤 인터랙션 ───
+      const mm = gsap.matchMedia()
+
+      // 데스크탑 — 기존 스태거와 동일하게 한 번에 등장
+      mm.add('(min-width: 768px)', () => {
+        const grid = document.querySelector<HTMLElement>('.js-industry-grid')
+        if (!grid) return
+        const iCards = grid.querySelectorAll<HTMLElement>('.js-industry-card')
+        gsap.set(iCards, { opacity: 0, y: 20 })
+        gsap.to(iCards, {
+          opacity: 1,
+          y: 0,
+          duration: 0.75,
+          stagger: 0.1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: grid,
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+            invalidateOnRefresh: true,
+          },
+        })
+      })
+
+      // 모바일 — 카드 하나씩 스크롤에 반응해 돋보이도록
+      mm.add('(max-width: 767px)', () => {
+        const iCards = gsap.utils.toArray<HTMLElement>('.js-industry-card')
+
+        // 초기 상태: 왼쪽으로 밀려 있고 어둡게
+        gsap.set(iCards, { opacity: 0, x: -28, y: 0 })
+
+        iCards.forEach((card) => {
+          const accent = card.querySelector<HTMLElement>('.js-ind-accent')
+          const title = card.querySelector<HTMLElement>('.js-ind-title')
+
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 78%',
+              end: 'bottom 22%',
+              // 진입 시 재생, 역스크롤 시 되감기
+              toggleActions: 'play none none reverse',
+            },
+          })
+
+          // ① 카드 슬라이드 인 + 페이드
+          tl.to(card, { opacity: 1, x: 0, duration: 0.52, ease: 'power3.out' })
+
+          // ② 오렌지 액센트 바 위에서 아래로 자람
+          if (accent) {
+            tl.to(
+              accent,
+              { scaleY: 1, duration: 0.4, ease: 'power2.inOut' },
+              '-=0.32',
+            )
+          }
+
+          // ③ 카드 테두리 글로우 (brief flash)
+          tl.to(
+            card,
+            {
+              boxShadow: '-4px 0 22px rgba(232,82,42,0.22)',
+              duration: 0.3,
+              ease: 'power2.out',
+            },
+            '-=0.25',
+          )
+
+          // ④ 타이틀 텍스트 warm glow → 자연스럽게 소멸
+          if (title) {
+            tl.to(
+              title,
+              { textShadow: '0 0 18px rgba(232,82,42,0.6)', duration: 0.22, ease: 'power2.out' },
+              '-=0.18',
+            )
+            tl.to(title, { textShadow: '0 0 0px rgba(232,82,42,0)', duration: 0.5, ease: 'power2.in' })
+          }
+        })
+
+        return () => {
+          gsap.set(iCards, { clearProps: 'all' })
+        }
+      })
 
       // ── 위치 재계산 (초기 1차 보정) ─────────────────────────────────
       ScrollTrigger.refresh()
@@ -424,51 +509,7 @@ export default function Home() {
       </div>
 
       {/* ═══ 모바일 하단 액션바 ══════════════════════════════════════ */}
-      <div className="fixed inset-x-0 bottom-0 z-50 md:hidden">
-        <div
-          className="border-t border-white/[0.06] bg-[#0A0A0A]/95 px-4 pt-3 backdrop-blur-2xl"
-          style={{ paddingBottom: 'max(0.75rem, env(safe-area-inset-bottom))' }}
-        >
-          <div className="grid grid-cols-[1fr_1fr_2fr] gap-2">
-
-            {/* 전화 상담 */}
-            <a
-              href="tel:0000000000"
-              className="flex flex-col items-center justify-center gap-1 rounded-2xl border border-white/10 py-3 text-white transition-all active:scale-[0.96] active:bg-white/5"
-              aria-label="전화 상담"
-            >
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-                <path d="M2.5 3A1.5 1.5 0 014 1.5h.6a1.5 1.5 0 011.4.963l.67 1.674a1.5 1.5 0 01-.34 1.658L5.28 6.84a8.12 8.12 0 004.88 4.88l1.045-1.05a1.5 1.5 0 011.658-.34l1.674.67A1.5 1.5 0 0116.5 12.4V13a1.5 1.5 0 01-1.5 1.5C8.044 14.5 1.5 7.956 1.5 1.5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-              <span className="text-[10px] font-bold tracking-wide text-white/70">전화상담</span>
-            </a>
-
-            {/* 카카오 상담 */}
-            <a
-              href="https://open.kakao.com"
-              className="flex flex-col items-center justify-center gap-1 rounded-2xl border border-[#FEE500]/20 bg-[#FEE500]/5 py-3 text-[#FEE500] transition-all active:scale-[0.96] active:bg-[#FEE500]/10"
-              aria-label="카카오 상담"
-            >
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-                <path d="M9 2C5.134 2 2 4.477 2 7.5c0 1.9 1.072 3.576 2.715 4.61L3.75 15l3.023-1.98A8.3 8.3 0 009 13c3.866 0 7-2.477 7-5.5S12.866 2 9 2z" fill="currentColor" />
-              </svg>
-              <span className="text-[10px] font-bold tracking-wide text-[#FEE500]/80">카카오</span>
-            </a>
-
-            {/* 무료 상담 CTA */}
-            <a
-              href="#contact"
-              className="flex items-center justify-center gap-2 rounded-2xl bg-[#E8522A] text-[13px] font-black text-white shadow-[0_4px_20px_rgba(232,82,42,0.4)] transition-all active:scale-[0.96] active:bg-[#D44820]"
-            >
-              무료 상담하기
-              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
-                <path d="M2 6.5h9M7 2.5l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </a>
-
-          </div>
-        </div>
-      </div>
+      <MobileActionBar />
 
       {/* ═══ ① 히어로 ═══════════════════════════════════════════════════ */}
       <section className="relative min-h-screen bg-[#0A0A0A] px-5 pb-20 pt-28 md:px-10 md:pt-32">
@@ -708,13 +749,18 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="js-stagger grid gap-px bg-white/8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="js-stagger js-industry-grid grid gap-px bg-white/8 md:grid-cols-2 lg:grid-cols-3">
             {INDUSTRIES.map((ind, i) => (
               <Link
                 key={ind.label}
                 href={ind.href}
-                className="js-card group flex flex-col gap-5 bg-[#0A0A0A] p-7 transition-colors duration-200 hover:bg-[#141414]"
+                className="js-card js-industry-card group relative flex flex-col gap-5 overflow-hidden bg-[#0A0A0A] p-7 transition-colors duration-200 hover:bg-[#141414]"
               >
+                <span
+                  className="js-ind-accent pointer-events-none absolute left-0 top-0 h-full w-[3px] origin-top bg-[#E8522A]"
+                  style={{ transform: 'scaleY(0)' }}
+                  aria-hidden="true"
+                />
                 <div className="flex items-center justify-between">
                   <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-white/20">
                     0{i + 1}
@@ -731,7 +777,7 @@ export default function Home() {
                       style={{ backgroundColor: ind.color }}
                       aria-hidden="true"
                     />
-                    <h3 className="text-[clamp(1.6rem,3vw,2.2rem)] font-black tracking-[-0.04em] text-white">
+                    <h3 className="js-ind-title text-[clamp(1.6rem,3vw,2.2rem)] font-black tracking-[-0.04em] text-white">
                       {ind.label}
                     </h3>
                   </div>
