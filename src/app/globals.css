@@ -255,6 +255,17 @@
   }
 }
 
+/* 티커 스크롤 속도: 모바일 빠르게, 데스크탑 느리게 */
+.ticker-scroll {
+  animation: marquee 22s linear infinite;
+}
+
+@media (max-width: 767px) {
+  .ticker-scroll {
+    animation-duration: 10s;
+  }
+}
+
 @keyframes pulse-dot {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.3; }
