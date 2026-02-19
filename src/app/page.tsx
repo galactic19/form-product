@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { HeroCanvas } from '@/components/animations/HeroCanvas'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -491,6 +492,9 @@ export default function Home() {
 
       {/* ═══ ① 히어로 ═══════════════════════════════════════════════════ */}
       <section className="relative min-h-screen bg-[#0A0A0A] px-5 pb-20 pt-28 md:px-10 md:pt-32">
+        {/* 인터렉티브 파티클 캔버스 배경 */}
+        <HeroCanvas />
+
         {/* 배경 그라디언트 액센트 */}
         <div
           className="pointer-events-none absolute right-0 top-0 h-[60vh] w-[50vw] opacity-20"
