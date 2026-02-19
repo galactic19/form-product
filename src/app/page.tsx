@@ -5,6 +5,7 @@ import Link from 'next/link'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { HeroCanvas } from '@/components/animations/HeroCanvas'
+import { TestimonialsSection } from '@/components/sections/TestimonialsSection'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -95,27 +96,6 @@ const STEPS = [
     no: '03',
     title: '즉시 운영',
     desc: '당일 광고 집행이 가능한 형태로 납품.',
-  },
-]
-
-const TESTIMONIALS = [
-  {
-    name: '김○○ 대표',
-    business: '서울 인터넷 대리점',
-    rating: 5,
-    text: '카카오 폼 쓸 때보다 문의율이 확실히 올랐어요. 업종에 딱 맞는 구조로 제작해 주셔서 고객들이 신뢰감을 갖는 것 같습니다.',
-  },
-  {
-    name: '박○○ 사장님',
-    business: '경기도 렌탈 대리점',
-    rating: 5,
-    text: '당일 납품해주셔서 바로 광고 집행했는데 첫날부터 문의가 왔어요. 이 업종 전문으로 하는 곳이라 구조가 확실히 달라요.',
-  },
-  {
-    name: '이○○ 설계사',
-    business: '인천 보험 대리점',
-    rating: 5,
-    text: '전문 업체에 맡기는 것보다 훨씬 저렴한데 완성도는 오히려 더 좋았어요. 업종을 정확히 아시더라고요. 다음에도 또 맡길 겁니다.',
   },
 ]
 
@@ -570,16 +550,13 @@ export default function Home() {
       </section>
 
       {/* ═══ ② 티커 ═══════════════════════════════════════════════════ */}
-      <div className="overflow-hidden border-y border-[#111]/8 bg-[#F6F5F1] py-3.5">
-        <div
-          className="flex items-center gap-10 whitespace-nowrap"
-          style={{ animation: 'marquee 22s linear infinite' }}
-        >
+      <div className="overflow-hidden border-y border-[#111]/10 bg-[#F6F5F1] py-5 md:py-6">
+        <div className="ticker-scroll flex items-center gap-14 whitespace-nowrap md:gap-20">
           {[...Array(4)].flatMap((_, i) =>
             TICKER_ITEMS.map((item) => (
               <span
                 key={`${item}-${i}`}
-                className="flex items-center gap-3 text-[12px] font-semibold uppercase tracking-[0.14em] text-[#999]"
+                className="flex items-center gap-3.5 text-[13px] font-bold uppercase tracking-[0.16em] text-[#777] md:text-[14px]"
               >
                 <span className="text-[#E8522A]" aria-hidden="true">
                   ◆
@@ -1029,52 +1006,7 @@ export default function Home() {
       </section>
 
       {/* ═══ ⑩ 후기 ════════════════════════════════════════════════════ */}
-      <section className="bg-[#0A0A0A] px-5 py-20 text-white md:px-10 md:py-28">
-        <div className="mx-auto max-w-[1400px]">
-          <div className="js-reveal mb-12 md:mb-16">
-            <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.22em] text-white/30">
-              REVIEWS
-            </p>
-            <h2 className="text-[clamp(2rem,5vw,3.6rem)] font-black leading-[1.1] tracking-[-0.04em]">
-              실제 사용 후기
-            </h2>
-          </div>
-
-          <div className="js-stagger grid gap-5 md:grid-cols-3">
-            {TESTIMONIALS.map((t) => (
-              <article
-                key={t.name}
-                className="js-card flex flex-col gap-6 rounded-2xl border border-white/8 bg-white/[0.04] p-7"
-              >
-                {/* 별점 */}
-                <div className="flex gap-1" aria-label={`${t.rating}점`}>
-                  {Array.from({ length: t.rating }).map((_, i) => (
-                    <svg
-                      key={i}
-                      className="h-4 w-4 fill-[#E8522A]"
-                      viewBox="0 0 20 20"
-                      aria-hidden="true"
-                    >
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                </div>
-
-                {/* 본문 */}
-                <p className="flex-1 text-[15px] leading-[1.85] text-white/70">
-                  &ldquo;{t.text}&rdquo;
-                </p>
-
-                {/* 작성자 */}
-                <div className="border-t border-white/8 pt-5">
-                  <p className="font-black text-white">{t.name}</p>
-                  <p className="mt-0.5 text-[12px] text-white/35">{t.business}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      <TestimonialsSection />
 
       {/* ═══ ⑪ FAQ ══════════════════════════════════════════════════════ */}
       <section id="faq" className="px-5 py-20 md:px-10 md:py-28">
