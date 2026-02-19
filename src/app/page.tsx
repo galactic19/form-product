@@ -7,6 +7,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { HeroCanvas } from '@/components/animations/HeroCanvas'
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection'
 import { MobileActionBar } from '@/components/sections/MobileActionBar'
+import { TemplateMarqueeDemo } from '@/components/sections/TemplateMarqueeDemo'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -881,16 +882,16 @@ export default function Home() {
                 TEMPLATES
               </p>
               <h2 className="text-[clamp(2rem,5vw,3.6rem)] font-black leading-[1.1] tracking-[-0.04em]">
-                실제 사용 중인
+                온라인에서도
                 <br />
-                템플릿 예시
+                영업하세요
               </h2>
             </div>
             <div className="flex flex-col items-start gap-3 md:items-end">
               <p className="max-w-[300px] text-[14px] leading-[1.8] text-[#888]">
-                이미지 교체만으로 바로 운영 가능한
+                광고 링크에 이 화면 하나만 달면 됩니다.
                 <br />
-                완성형 구조로 납품됩니다.
+                자는 동안에도 문의가 들어오기 시작합니다.
               </p>
               <Link
                 href="/templates"
@@ -900,6 +901,9 @@ export default function Home() {
               </Link>
             </div>
           </div>
+
+          {/* ── 템플릿 마키 데모 ───────────────────────────────────────── */}
+          <TemplateMarqueeDemo />
 
           <div className="js-stagger grid gap-5 md:grid-cols-3">
             {[
