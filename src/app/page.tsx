@@ -255,7 +255,7 @@ export default function Home() {
       gsap.utils
         .toArray<HTMLElement>('.js-stagger')
         .forEach((parent) => {
-          const kids = parent.querySelectorAll<HTMLElement>('.js-card')
+          const kids = parent.querySelectorAll<HTMLElement>('.js-card:not(.js-industry-card)')
           if (kids.length === 0) return
           gsap.to(kids, {
             opacity: 1,
@@ -271,6 +271,79 @@ export default function Home() {
             },
           })
         })
+
+      // ── 업종 카드: 데스크탑 스태거 / 모바일 개별 스크롤 인터랙션 ───
+      const mm = gsap.matchMedia()
+
+      // 데스크탑 — 기존 스태거와 동일하게 한 번에 등장
+      mm.add('(min-width: 768px)', () => {
+        const grid = document.querySelector<HTMLElement>('.js-industry-grid')
+        if (!grid) return
+        const iCards = grid.querySelectorAll<HTMLElement>('.js-industry-card')
+        gsap.set(iCards, { opacity: 0, y: 20 })
+        gsap.to(iCards, {
+          opacity: 1,
+          y: 0,
+          duration: 0.75,
+          stagger: 0.1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: grid,
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+            invalidateOnRefresh: true,
+          },
+        })
+      })
+
+      // 모바일 — 카드 하나씩 스크롤에 반응해 돋보이도록
+      mm.add('(max-width: 767px)', () => {
+        const iCards = gsap.utils.toArray<HTMLElement>('.js-industry-card')
+
+        // 초기 상태: 왼쪽으로 밀려 있고 어둡게
+        gsap.set(iCards, { opacity: 0, x: -28, y: 0 })
+
+        iCards.forEach((card) => {
+          const accent = card.querySelector<HTMLElement>('.js-ind-accent')
+
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 78%',
+              end: 'bottom 22%',
+              // 진입 시 재생, 역스크롤 시 되감기
+              toggleActions: 'play none none reverse',
+            },
+          })
+
+          // ① 카드 슬라이드 인 + 페이드
+          tl.to(card, { opacity: 1, x: 0, duration: 0.52, ease: 'power3.out' })
+
+          // ② 오렌지 액센트 바 위에서 아래로 자람
+          if (accent) {
+            tl.to(
+              accent,
+              { scaleY: 1, duration: 0.4, ease: 'power2.inOut' },
+              '-=0.32',
+            )
+          }
+
+          // ③ 카드 테두리 글로우 (brief flash)
+          tl.to(
+            card,
+            {
+              boxShadow: '-4px 0 22px rgba(232,82,42,0.22)',
+              duration: 0.3,
+              ease: 'power2.out',
+            },
+            '-=0.25',
+          )
+        })
+
+        return () => {
+          gsap.set(iCards, { clearProps: 'all' })
+        }
+      })
 
       // ── 위치 재계산 (초기 1차 보정) ─────────────────────────────────
       ScrollTrigger.refresh()
@@ -708,13 +781,18 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="js-stagger grid gap-px bg-white/8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="js-stagger js-industry-grid grid gap-px bg-white/8 md:grid-cols-2 lg:grid-cols-3">
             {INDUSTRIES.map((ind, i) => (
               <Link
                 key={ind.label}
                 href={ind.href}
-                className="js-card group flex flex-col gap-5 bg-[#0A0A0A] p-7 transition-colors duration-200 hover:bg-[#141414]"
+                className="js-card js-industry-card group relative flex flex-col gap-5 overflow-hidden bg-[#0A0A0A] p-7 transition-colors duration-200 hover:bg-[#141414]"
               >
+                <span
+                  className="js-ind-accent pointer-events-none absolute left-0 top-0 h-full w-[3px] origin-top bg-[#E8522A]"
+                  style={{ transform: 'scaleY(0)' }}
+                  aria-hidden="true"
+                />
                 <div className="flex items-center justify-between">
                   <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-white/20">
                     0{i + 1}
