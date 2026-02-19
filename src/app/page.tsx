@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { HeroCanvas } from '@/components/animations/HeroCanvas'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -97,6 +98,54 @@ const STEPS = [
   },
 ]
 
+const TESTIMONIALS = [
+  {
+    name: '김○○ 대표',
+    business: '서울 인터넷 대리점',
+    rating: 5,
+    text: '카카오 폼 쓸 때보다 문의율이 확실히 올랐어요. 업종에 딱 맞는 구조로 제작해 주셔서 고객들이 신뢰감을 갖는 것 같습니다.',
+  },
+  {
+    name: '박○○ 사장님',
+    business: '경기도 렌탈 대리점',
+    rating: 5,
+    text: '당일 납품해주셔서 바로 광고 집행했는데 첫날부터 문의가 왔어요. 이 업종 전문으로 하는 곳이라 구조가 확실히 달라요.',
+  },
+  {
+    name: '이○○ 설계사',
+    business: '인천 보험 대리점',
+    rating: 5,
+    text: '전문 업체에 맡기는 것보다 훨씬 저렴한데 완성도는 오히려 더 좋았어요. 업종을 정확히 아시더라고요. 다음에도 또 맡길 겁니다.',
+  },
+]
+
+const FAQS = [
+  {
+    q: '제작 기간이 얼마나 걸리나요?',
+    a: '평균 3일 이내 납품합니다. 정보를 빠르게 주시면 당일 납품도 가능합니다. 맞춤 제작의 경우 복잡도에 따라 최대 5~7일이 소요될 수 있습니다.',
+  },
+  {
+    q: '코딩이나 디자인 지식이 없어도 운영할 수 있나요?',
+    a: '네, 전혀 필요 없습니다. 업체명·연락처·이미지만 알려주시면 저희가 완성해서 드립니다. 납품 후 광고를 바로 집행할 수 있는 형태로 전달해 드립니다.',
+  },
+  {
+    q: '템플릿 구매 후 수정 요청이 가능한가요?',
+    a: '납품 후 7일 이내 기본 정보 수정(업체명, 연락처, 이미지 교체 등)은 무료로 도와드립니다. 구조적인 변경이 필요하시면 맞춤 제작으로 진행해 주세요.',
+  },
+  {
+    q: '어떤 광고 플랫폼과 연동되나요?',
+    a: '메타(인스타그램·페이스북), 구글, 네이버 등 어떤 광고 플랫폼과도 연동됩니다. 랜딩페이지 URL만 광고에 넣으시면 바로 집행 가능합니다.',
+  },
+  {
+    q: '6개 외 다른 업종도 제작 가능한가요?',
+    a: '가능합니다. 인터넷·TV·휴대폰·렌탈·보험·중고차 외에도 가입상품·구독형 상품을 판매하는 업종이라면 맞춤 제작으로 진행할 수 있습니다. 상담 시 말씀해 주세요.',
+  },
+  {
+    q: '결제 방식은 어떻게 되나요?',
+    a: '계좌이체 및 카드 결제 모두 가능합니다. 맞춤 제작의 경우 착수금 50% 선결제 후 납품 완료 시 잔금을 결제하는 방식으로 진행합니다.',
+  },
+]
+
 const TICKER_ITEMS = [
   ...INDUSTRIES.map((i) => `${i.label} — ${i.en}`),
   '고전환 설계 — HIGH CONVERSION',
@@ -110,6 +159,7 @@ export default function Home() {
   const headerRef = useRef<HTMLElement>(null)
   const ctxRef = useRef<gsap.Context | null>(null)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [openFaq, setOpenFaq] = useState<number | null>(null)
 
   // 메뉴 열릴 때 스크롤 잠금
   useEffect(() => {
@@ -442,6 +492,9 @@ export default function Home() {
 
       {/* ═══ ① 히어로 ═══════════════════════════════════════════════════ */}
       <section className="relative min-h-screen bg-[#0A0A0A] px-5 pb-20 pt-28 md:px-10 md:pt-32">
+        {/* 인터렉티브 파티클 캔버스 배경 */}
+        <HeroCanvas />
+
         {/* 배경 그라디언트 액센트 */}
         <div
           className="pointer-events-none absolute right-0 top-0 h-[60vh] w-[50vw] opacity-20"
@@ -461,17 +514,6 @@ export default function Home() {
         />
 
         <div className="relative mx-auto max-w-[1400px]">
-          {/* 배지 */}
-          <div className="js-hero-badge mb-8 inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/5 px-4 py-2">
-            <span
-              className="h-1.5 w-1.5 rounded-full bg-[#E8522A]"
-              style={{ animation: 'pulse-dot 2s ease-in-out infinite' }}
-            />
-            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-white/60">
-              인터넷 · 렌탈 · 보험 대리점 사장님 전용
-            </span>
-          </div>
-
           {/* 타이틀 — 마스크 슬라이드업 효과 */}
           <div className="mb-8 space-y-1">
             <div className="overflow-hidden">
@@ -986,7 +1028,123 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ ⑩ 문의 CTA ════════════════════════════════════════════════ */}
+      {/* ═══ ⑩ 후기 ════════════════════════════════════════════════════ */}
+      <section className="bg-[#0A0A0A] px-5 py-20 text-white md:px-10 md:py-28">
+        <div className="mx-auto max-w-[1400px]">
+          <div className="js-reveal mb-12 md:mb-16">
+            <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.22em] text-white/30">
+              REVIEWS
+            </p>
+            <h2 className="text-[clamp(2rem,5vw,3.6rem)] font-black leading-[1.1] tracking-[-0.04em]">
+              실제 사용 후기
+            </h2>
+          </div>
+
+          <div className="js-stagger grid gap-5 md:grid-cols-3">
+            {TESTIMONIALS.map((t) => (
+              <article
+                key={t.name}
+                className="js-card flex flex-col gap-6 rounded-2xl border border-white/8 bg-white/[0.04] p-7"
+              >
+                {/* 별점 */}
+                <div className="flex gap-1" aria-label={`${t.rating}점`}>
+                  {Array.from({ length: t.rating }).map((_, i) => (
+                    <svg
+                      key={i}
+                      className="h-4 w-4 fill-[#E8522A]"
+                      viewBox="0 0 20 20"
+                      aria-hidden="true"
+                    >
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+
+                {/* 본문 */}
+                <p className="flex-1 text-[15px] leading-[1.85] text-white/70">
+                  &ldquo;{t.text}&rdquo;
+                </p>
+
+                {/* 작성자 */}
+                <div className="border-t border-white/8 pt-5">
+                  <p className="font-black text-white">{t.name}</p>
+                  <p className="mt-0.5 text-[12px] text-white/35">{t.business}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ ⑪ FAQ ══════════════════════════════════════════════════════ */}
+      <section id="faq" className="px-5 py-20 md:px-10 md:py-28">
+        <div className="mx-auto max-w-[800px]">
+          <div className="js-reveal mb-12 text-center md:mb-16">
+            <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.22em] text-[#BBB]">
+              FAQ
+            </p>
+            <h2 className="text-[clamp(2rem,5vw,3.6rem)] font-black leading-[1.1] tracking-[-0.04em]">
+              자주 묻는 질문
+            </h2>
+          </div>
+
+          <div className="js-stagger space-y-3">
+            {FAQS.map((faq, i) => (
+              <div
+                key={faq.q}
+                className="js-card overflow-hidden rounded-2xl border border-[#EBEBEB] bg-white"
+              >
+                <button
+                  className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  aria-expanded={openFaq === i}
+                >
+                  <span className="text-[15px] font-black leading-[1.4] tracking-[-0.02em] text-[#111]">
+                    {faq.q}
+                  </span>
+                  <svg
+                    className={`h-5 w-5 shrink-0 text-[#999] transition-transform duration-300 ${openFaq === i ? 'rotate-45' : ''}`}
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M10 4v12M4 10h12"
+                      stroke="currentColor"
+                      strokeWidth="1.75"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </button>
+
+                <div
+                  className={`overflow-hidden transition-all duration-300 ease-in-out ${openFaq === i ? 'max-h-48' : 'max-h-0'}`}
+                >
+                  <p className="px-6 pb-6 text-[14px] leading-[1.85] text-[#666]">
+                    {faq.a}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* 추가 문의 유도 */}
+          <div className="js-reveal mt-10 rounded-2xl bg-[#F6F5F1] px-6 py-6 text-center md:mt-12">
+            <p className="font-black text-[#111]">해결되지 않은 궁금한 점이 있으신가요?</p>
+            <p className="mb-5 mt-1 text-[13px] text-[#888]">
+              직접 상담해드리겠습니다. 언제든지 연락주세요.
+            </p>
+            <a
+              href="#contact"
+              className="inline-flex h-[44px] items-center rounded-full bg-[#E8522A] px-6 text-[13px] font-bold text-white transition-all hover:bg-[#D44820]"
+            >
+              지금 무료 상담하기 →
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ ⑫ 문의 CTA ════════════════════════════════════════════════ */}
       <section id="contact" className="bg-[#E8522A] px-5 py-20 md:px-10 md:py-28">
         <div className="mx-auto max-w-[1400px]">
           <div className="js-reveal">
