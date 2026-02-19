@@ -75,6 +75,19 @@ export function HeroCanvas() {
       }
     }
 
+    // ── 점 → 선분 최단거리 ────────────────────────────────────────────
+    const ptSegDist = (
+      px: number, py: number,
+      ax: number, ay: number,
+      bx: number, by: number,
+    ): number => {
+      const dx = bx - ax, dy = by - ay
+      const lenSq = dx * dx + dy * dy
+      if (lenSq === 0) return Math.hypot(px - ax, py - ay)
+      const t = Math.max(0, Math.min(1, ((px - ax) * dx + (py - ay) * dy) / lenSq))
+      return Math.hypot(px - ax - t * dx, py - ay - t * dy)
+    }
+
     // ── 매 프레임 ─────────────────────────────────────────────────────
     const frame = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -114,23 +127,38 @@ export function HeroCanvas() {
         if (p.x < -6)              p.x = canvas.width + 6
       }
 
-      // 연결선 드로잉
-      ctx.lineWidth = 0.5
+      // 연결선 드로잉 — 마우스 근접 시 글로우
+      const LINE_MOUSE_R  = 95   // 선 글로우 발동 반경
+      const CONNECT_D_SQ  = CONNECT_D * CONNECT_D
+
       for (let i = 0; i < N; i++) {
         for (let j = i + 1; j < N; j++) {
-          const dx = particles[i].x - particles[j].x
-          const dy = particles[i].y - particles[j].y
+          const pi = particles[i], pj = particles[j]
+          const dx = pi.x - pj.x, dy = pi.y - pj.y
           const d2 = dx * dx + dy * dy
-          if (d2 < CONNECT_D * CONNECT_D) {
-            const alpha = (1 - Math.sqrt(d2) / CONNECT_D) * 0.2
-            ctx.beginPath()
-            ctx.moveTo(particles[i].x, particles[i].y)
-            ctx.lineTo(particles[j].x, particles[j].y)
-            ctx.strokeStyle = `rgba(232,82,42,${alpha})`
-            ctx.stroke()
-          }
+          if (d2 >= CONNECT_D_SQ) continue
+
+          const dist      = Math.sqrt(d2)
+          const baseAlpha = (1 - dist / CONNECT_D) * 0.28
+
+          // 마우스 → 이 선분의 최단거리
+          const segDist = ptSegDist(mx, my, pi.x, pi.y, pj.x, pj.y)
+          const prox    = segDist < LINE_MOUSE_R
+            ? (1 - segDist / LINE_MOUSE_R) ** 1.3
+            : 0
+
+          ctx.beginPath()
+          ctx.moveTo(pi.x, pi.y)
+          ctx.lineTo(pj.x, pj.y)
+          ctx.lineWidth    = 0.5 + prox * 1.8
+          ctx.strokeStyle  = `rgba(232,82,42,${Math.min(0.92, baseAlpha + prox * 0.7)})`
+          ctx.shadowColor  = 'rgba(232,82,42,0.9)'
+          ctx.shadowBlur   = prox * 14
+          ctx.stroke()
         }
       }
+      // 이후 파티클 드로잉에 shadow 번지지 않도록 리셋
+      ctx.shadowBlur = 0
 
       // 파티클 드로잉
       for (const p of particles) {
