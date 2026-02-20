@@ -20,7 +20,15 @@
       "Bash(powershell -Command \"Set-Location ''D:\\\\dev\\\\form-product''; node check-page2.mjs 2>&1\")",
       "Bash(powershell -Command \"Set-Location ''D:\\\\dev\\\\form-product''; node check-final.mjs 2>&1\")",
       "Bash(powershell -Command:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "WebSearch",
+      "WebFetch(domain:www.typeform.com)",
+      "WebFetch(domain:www.framer.com)",
+      "WebFetch(domain:www.carrd.co)",
+      "WebFetch(domain:www.jotform.com)",
+      "WebFetch(domain:www.imweb.me)",
+      "WebFetch(domain:www.sixshop.com)",
+      "Bash(curl:*)"
     ]
   }
 }
