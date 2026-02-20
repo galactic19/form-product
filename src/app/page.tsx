@@ -8,6 +8,7 @@ import { HeroCanvas } from '@/components/animations/HeroCanvas'
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection'
 import { MobileActionBar } from '@/components/sections/MobileActionBar'
 import { TemplateMarqueeDemo } from '@/components/sections/TemplateMarqueeDemo'
+import { ShowcaseTabs } from '@/components/sections/ShowcaseTabs'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -905,49 +906,7 @@ export default function Home() {
           {/* ── 템플릿 마키 데모 ───────────────────────────────────────── */}
           <TemplateMarqueeDemo />
 
-          <div className="js-stagger grid gap-5 md:grid-cols-3">
-            {[
-              { title: '인터넷 가입 신청', sub: '통신사별 비교 + 즉시 신청', bg: '#D9D7CF' },
-              { title: 'TV 수신 설치', sub: '채널 구성 시각화 + 신청', bg: '#C9C7BF', offset: true },
-              { title: '렌탈 상품 신청', sub: '월 비용 강조 + 방문 예약', bg: '#D4D2CA' },
-            ].map(({ title, sub, bg, offset }) => (
-              <div
-                key={title}
-                className={`js-card overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_56px_rgba(0,0,0,0.12)] ${offset ? 'md:translate-y-6' : ''}`}
-              >
-                {/* 목업 프리뷰 */}
-                <div
-                  className="relative flex h-[260px] flex-col justify-between p-5 md:h-[340px]"
-                  style={{ backgroundColor: bg }}
-                >
-                  {/* 모바일 프레임 목업 */}
-                  <div className="flex items-center gap-1.5 opacity-40">
-                    <div className="h-1.5 w-1.5 rounded-full bg-[#111]" />
-                    <div className="h-px flex-1 bg-[#111]" />
-                  </div>
-
-                  <div className="space-y-3">
-                    <div className="h-28 rounded-xl bg-white/50" />
-                    <div className="space-y-2">
-                      <div className="h-3 w-4/5 rounded-full bg-[#111]/15" />
-                      <div className="h-3 w-3/5 rounded-full bg-[#111]/10" />
-                    </div>
-                    <div className="h-10 rounded-lg bg-[#E8522A]/80" />
-                  </div>
-
-                  <div className="absolute right-4 top-4 rounded-full bg-[#E8522A] px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.15em] text-white">
-                    LIVE
-                  </div>
-                </div>
-
-                {/* 카드 텍스트 */}
-                <div className="bg-white px-5 py-4">
-                  <p className="font-black tracking-[-0.02em]">{title}</p>
-                  <p className="mt-0.5 text-[12px] text-[#888]">{sub}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ShowcaseTabs />
         </div>
       </section>
 
