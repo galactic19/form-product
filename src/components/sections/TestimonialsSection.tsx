@@ -23,7 +23,45 @@ const TESTIMONIALS = [
     rating: 5,
     text: '전문 업체에 맡기는 것보다 훨씬 저렴한데 완성도는 오히려 더 좋았어요. 업종을 정확히 아시더라고요. 다음에도 또 맡길 겁니다.',
   },
+  {
+    name: '최○○ 원장',
+    business: '부산 피부과 의원',
+    rating: 5,
+    text: '랜딩 페이지 하나로 한 달 만에 예약이 2배 늘었어요. 병원 느낌과 신뢰감을 완벽하게 잡아주셨습니다.',
+  },
+  {
+    name: '정○○ 대표',
+    business: '대전 중고차 매매상사',
+    rating: 5,
+    text: '광고비는 그대로인데 문의 전환율이 눈에 띄게 올랐어요. 업종 특성을 정말 잘 이해하고 만들어주십니다.',
+  },
+  {
+    name: '강○○ 팀장',
+    business: '광주 통신사 위탁 대리점',
+    rating: 5,
+    text: '처음엔 반신반의했는데 3일 만에 완성되고 바로 집행하니까 효과가 즉각 나타났어요. 가성비가 정말 최고입니다.',
+  },
+  {
+    name: '윤○○ 대표',
+    business: '서울 법무법인',
+    rating: 5,
+    text: '법인 이미지에 맞게 고급스럽게 제작해 주셨어요. 고객들이 첫 페이지에서 바로 신뢰감을 느낀다고 피드백합니다.',
+  },
+  {
+    name: '조○○ 사장님',
+    business: '경남 가전 렌탈 대리점',
+    rating: 5,
+    text: '타 업체 가격의 절반도 안 되는데 퀄리티는 훨씬 높아요. 업종 전문이라 그런지 고객 심리를 정확히 건드려줍니다.',
+  },
+  {
+    name: '장○○ 팀장',
+    business: '인천 자동차 보험사',
+    rating: 5,
+    text: '설문 구조가 탁월해요. 이탈률이 줄고 실제 문의까지 이어지는 비율이 크게 높아졌습니다. 계속 사용할 예정입니다.',
+  },
 ]
+
+type T = (typeof TESTIMONIALS)[number]
 
 // ─── 공용 별점 ─────────────────────────────────────────────────────────────────
 
@@ -39,53 +77,95 @@ function Stars({ n }: { n: number }) {
   )
 }
 
-// ─── 테마 0: 다크 그리드 ──────────────────────────────────────────────────────
+// ─── 마퀴 공용 컴포넌트 ────────────────────────────────────────────────────────
 
-function DarkCards() {
+function MarqueeTrack({
+  items,
+  reverse = false,
+  renderCard,
+}: {
+  items: T[]
+  reverse?: boolean
+  renderCard: (t: T, i: number) => React.ReactNode
+}) {
   return (
-    <div className="grid gap-5 md:grid-cols-3">
-      {TESTIMONIALS.map((t) => (
-        <article
-          key={t.name}
-          className="flex flex-col gap-5 rounded-2xl border border-white/8 bg-white/[0.04] p-8 transition-all duration-300 hover:border-[#E8522A]/30 hover:bg-white/[0.07]"
-        >
-          <div className="select-none text-[5rem] font-black leading-none text-[#E8522A]/20" aria-hidden="true">
-            &ldquo;
-          </div>
-          <Stars n={t.rating} />
-          <p className="flex-1 text-[15px] leading-[1.9] text-white/70">{t.text}</p>
-          <div className="border-t border-white/8 pt-5">
-            <p className="font-black text-white">{t.name}</p>
-            <p className="mt-0.5 text-[12px] text-white/35">{t.business}</p>
-          </div>
-        </article>
-      ))}
+    <div
+      className="overflow-hidden"
+      style={{
+        maskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)',
+        WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)',
+      }}
+    >
+      <div
+        className="flex gap-5"
+        style={{
+          width: 'max-content',
+          animation: `${reverse ? 'review-scroll-right' : 'review-scroll-left'} 42s linear infinite`,
+          willChange: 'transform',
+        }}
+      >
+        {[...items, ...items].map((t, i) => renderCard(t, i))}
+      </div>
     </div>
   )
 }
 
-// ─── 테마 1: 라이트 그리드 ────────────────────────────────────────────────────
-
-function LightCards() {
+function MarqueeLayout({ renderCard }: { renderCard: (t: T, i: number) => React.ReactNode }) {
   return (
-    <div className="grid gap-5 md:grid-cols-3">
-      {TESTIMONIALS.map((t) => (
+    <div className="flex flex-col gap-5">
+      <MarqueeTrack items={TESTIMONIALS} renderCard={renderCard} />
+      <MarqueeTrack items={[...TESTIMONIALS].reverse()} reverse renderCard={renderCard} />
+    </div>
+  )
+}
+
+// ─── 테마 0: 다크 ──────────────────────────────────────────────────────────────
+
+function DarkCards() {
+  return (
+    <MarqueeLayout
+      renderCard={(t, i) => (
         <article
-          key={t.name}
-          className="flex flex-col gap-5 rounded-3xl bg-white p-8 shadow-[0_2px_24px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(0,0,0,0.11)]"
+          key={i}
+          className="flex w-[300px] shrink-0 flex-col gap-4 rounded-2xl border border-white/8 bg-white/[0.04] p-7 transition-all duration-300 hover:border-[#E8522A]/30 hover:bg-white/[0.07]"
         >
-          <div className="select-none text-[5rem] font-black leading-none text-[#E8522A]/15" aria-hidden="true">
+          <div className="select-none text-[3.5rem] font-black leading-none text-[#E8522A]/20" aria-hidden="true">
             &ldquo;
           </div>
           <Stars n={t.rating} />
-          <p className="flex-1 text-[15px] leading-[1.9] text-[#555]">{t.text}</p>
-          <div className="border-t border-[#F0F0F0] pt-5">
+          <p className="flex-1 text-[14px] leading-[1.85] text-white/70">{t.text}</p>
+          <div className="border-t border-white/8 pt-4">
+            <p className="font-black text-white">{t.name}</p>
+            <p className="mt-0.5 text-[12px] text-white/35">{t.business}</p>
+          </div>
+        </article>
+      )}
+    />
+  )
+}
+
+// ─── 테마 1: 라이트 ────────────────────────────────────────────────────────────
+
+function LightCards() {
+  return (
+    <MarqueeLayout
+      renderCard={(t, i) => (
+        <article
+          key={i}
+          className="flex w-[300px] shrink-0 flex-col gap-4 rounded-2xl bg-white p-7 shadow-[0_2px_24px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(0,0,0,0.11)]"
+        >
+          <div className="select-none text-[3.5rem] font-black leading-none text-[#E8522A]/15" aria-hidden="true">
+            &ldquo;
+          </div>
+          <Stars n={t.rating} />
+          <p className="flex-1 text-[14px] leading-[1.85] text-[#555]">{t.text}</p>
+          <div className="border-t border-[#F0F0F0] pt-4">
             <p className="font-black text-[#111]">{t.name}</p>
             <p className="mt-0.5 text-[12px] text-[#999]">{t.business}</p>
           </div>
         </article>
-      ))}
-    </div>
+      )}
+    />
   )
 }
 
@@ -93,28 +173,28 @@ function LightCards() {
 
 function BoldCards() {
   return (
-    <div className="flex flex-col divide-y divide-white/8">
-      {TESTIMONIALS.map((t, i) => (
+    <MarqueeLayout
+      renderCard={(t, i) => (
         <article
-          key={t.name}
-          className="flex flex-col gap-6 py-10 md:flex-row md:items-center md:gap-16 md:py-14"
+          key={i}
+          className="flex w-[340px] shrink-0 flex-col gap-4 rounded-2xl border border-white/8 p-8"
         >
-          <div className="flex shrink-0 flex-row items-center gap-5 md:w-[130px] md:flex-col md:items-start">
-            <span className="select-none text-[clamp(3rem,6vw,5rem)] font-black leading-none text-[#E8522A] tabular-nums">
-              {String(i + 1).padStart(2, '0')}
+          <div className="flex items-center gap-4">
+            <span className="select-none text-[2.2rem] font-black leading-none text-[#E8522A] tabular-nums">
+              {String((i % TESTIMONIALS.length) + 1).padStart(2, '0')}
             </span>
             <Stars n={t.rating} />
           </div>
-          <p className="flex-1 text-[clamp(1.05rem,2.2vw,1.3rem)] font-medium leading-[1.85] text-white/80">
+          <p className="flex-1 text-[15px] font-medium leading-[1.85] text-white/80">
             &ldquo;{t.text}&rdquo;
           </p>
-          <div className="shrink-0 md:w-[180px] md:text-right">
-            <p className="text-[1rem] font-black text-white">{t.name}</p>
+          <div className="border-t border-white/8 pt-4">
+            <p className="font-black text-white">{t.name}</p>
             <p className="mt-0.5 text-[12px] text-white/35">{t.business}</p>
           </div>
         </article>
-      ))}
-    </div>
+      )}
+    />
   )
 }
 
@@ -123,77 +203,102 @@ function BoldCards() {
 
 function GlassCards() {
   return (
-    <div className="grid gap-5 md:grid-cols-3">
-      {TESTIMONIALS.map((t) => (
+    <MarqueeLayout
+      renderCard={(t, i) => (
         <article
-          key={t.name}
-          className="flex flex-col gap-5 rounded-3xl border border-white/10 bg-white/[0.07] p-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-2xl transition-all duration-300 hover:border-white/18 hover:bg-white/[0.11]"
+          key={i}
+          className="flex w-[300px] shrink-0 flex-col gap-4 rounded-2xl border border-white/10 bg-white/[0.07] p-7 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-2xl transition-all duration-300 hover:border-white/18 hover:bg-white/[0.11]"
         >
-          {/* 상단 오렌지 그라디언트 액센트 선 */}
           <div className="h-[2px] w-10 rounded-full bg-gradient-to-r from-[#E8522A] to-[#FF9A5C]" />
           <Stars n={t.rating} />
-          <p className="flex-1 text-[15px] leading-[1.9] text-white/78">{t.text}</p>
-          <div className="border-t border-white/[0.07] pt-5">
+          <p className="flex-1 text-[14px] leading-[1.85] text-white/78">{t.text}</p>
+          <div className="border-t border-white/[0.07] pt-4">
             <p className="font-black text-white">{t.name}</p>
             <p className="mt-0.5 text-[12px] text-white/40">{t.business}</p>
           </div>
         </article>
-      ))}
-    </div>
+      )}
+    />
   )
 }
 
-// ─── 테마 4: 벤토 (비대칭 그리드) ────────────────────────────────────────────
-// Featured 카드(2/3) + 사이드 컴팩트 카드 2장(1/3)
+// ─── 테마 4: 벤토 (비대칭 그리드 + 확장 그리드) ──────────────────────────────
 
 function BentoCards() {
-  const [main, ...rest] = TESTIMONIALS
+  const [featured, ...rest] = TESTIMONIALS
   return (
-    <div className="grid gap-5 md:grid-cols-3 md:items-stretch">
-      {/* 피처드 카드 — 2열 차지 */}
-      <article className="flex flex-col justify-between rounded-3xl bg-white p-10 shadow-[0_4px_40px_rgba(0,0,0,0.09)] md:col-span-2">
-        <div>
-          <div
-            className="select-none text-[8rem] font-black leading-[0.8] text-[#E8522A]/10"
-            aria-hidden="true"
-          >
-            &ldquo;
-          </div>
-          <Stars n={main.rating} />
-          <p className="mt-5 text-[clamp(1rem,2vw,1.22rem)] leading-[1.9] text-[#3A3A3A]">
-            {main.text}
-          </p>
-        </div>
-        <div className="mt-8 flex items-center gap-4 border-t-2 border-[#E8522A]/12 pt-6">
-          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#FFF1ED] text-[13px] font-black text-[#E8522A]">
-            {main.name[0]}
-          </div>
+    <div className="flex flex-col gap-5">
+      {/* 상단: featured (2/3) + 2 side cards (1/3) */}
+      <div className="grid gap-5 md:grid-cols-3 md:items-stretch">
+        <article className="flex flex-col justify-between rounded-3xl bg-white p-10 shadow-[0_4px_40px_rgba(0,0,0,0.09)] md:col-span-2">
           <div>
-            <p className="text-[1.05rem] font-black text-[#111]">{main.name}</p>
-            <p className="mt-0.5 text-[12px] text-[#999]">{main.business}</p>
+            <div
+              className="select-none text-[8rem] font-black leading-[0.8] text-[#E8522A]/10"
+              aria-hidden="true"
+            >
+              &ldquo;
+            </div>
+            <Stars n={featured.rating} />
+            <p className="mt-5 text-[clamp(1rem,2vw,1.22rem)] leading-[1.9] text-[#3A3A3A]">
+              {featured.text}
+            </p>
           </div>
-        </div>
-      </article>
+          <div className="mt-8 flex items-center gap-4 border-t-2 border-[#E8522A]/12 pt-6">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#FFF1ED] text-[13px] font-black text-[#E8522A]">
+              {featured.name[0]}
+            </div>
+            <div>
+              <p className="text-[1.05rem] font-black text-[#111]">{featured.name}</p>
+              <p className="mt-0.5 text-[12px] text-[#999]">{featured.business}</p>
+            </div>
+          </div>
+        </article>
 
-      {/* 사이드 컴팩트 카드 컬럼 */}
-      <div className="flex flex-col gap-5">
-        {rest.map((t) => (
+        <div className="flex flex-col gap-5">
+          {rest.slice(0, 2).map((t) => (
+            <article
+              key={t.name}
+              className="flex flex-1 flex-col justify-between rounded-2xl bg-white p-6 shadow-[0_2px_20px_rgba(0,0,0,0.07)]"
+            >
+              <div>
+                <Stars n={t.rating} />
+                <p className="mt-3 text-[14px] leading-[1.8] text-[#555]">
+                  &ldquo;{t.text}&rdquo;
+                </p>
+              </div>
+              <div className="mt-4 flex items-center gap-3 border-t border-[#F4F4F4] pt-4">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#FFF1ED] text-[12px] font-black text-[#E8522A]">
+                  {t.name[0]}
+                </div>
+                <div>
+                  <p className="text-[13px] font-black text-[#111]">{t.name}</p>
+                  <p className="text-[11px] text-[#999]">{t.business}</p>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      {/* 하단: 3열 균등 그리드 */}
+      <div className="grid gap-5 md:grid-cols-3">
+        {rest.slice(2).map((t) => (
           <article
             key={t.name}
-            className="flex flex-1 flex-col justify-between rounded-2xl bg-white p-6 shadow-[0_2px_20px_rgba(0,0,0,0.07)]"
+            className="flex flex-col justify-between rounded-2xl bg-white p-7 shadow-[0_2px_20px_rgba(0,0,0,0.07)]"
           >
             <div>
               <Stars n={t.rating} />
-              <p className="mt-3 text-[14px] leading-[1.8] text-[#555]">
+              <p className="mt-3 text-[15px] leading-[1.8] text-[#555]">
                 &ldquo;{t.text}&rdquo;
               </p>
             </div>
             <div className="mt-4 flex items-center gap-3 border-t border-[#F4F4F4] pt-4">
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#FFF1ED] text-[12px] font-black text-[#E8522A]">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#FFF1ED] text-[13px] font-black text-[#E8522A]">
                 {t.name[0]}
               </div>
               <div>
-                <p className="text-[13px] font-black text-[#111]">{t.name}</p>
+                <p className="text-[14px] font-black text-[#111]">{t.name}</p>
                 <p className="text-[11px] text-[#999]">{t.business}</p>
               </div>
             </div>
@@ -281,7 +386,7 @@ export function TestimonialsSection() {
             </h2>
           </div>
 
-          {/* 테마 토글 — 5개로 모바일에서 줄바꿈 허용 */}
+          {/* 테마 토글 */}
           <div className="flex flex-wrap gap-2">
             {THEME_LABELS.map((label, i) => (
               <button
@@ -302,7 +407,7 @@ export function TestimonialsSection() {
         </div>
       </div>
 
-      {/* ── 카드: 남은 공간 채우고 수직 중앙 정렬 ── */}
+      {/* ── 카드 영역 ── */}
       <div
         className="relative z-10 flex flex-1 items-center"
         style={{ opacity: vis ? 1 : 0, transition: 'opacity 0.16s ease' }}
